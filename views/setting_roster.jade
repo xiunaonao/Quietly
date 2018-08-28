@@ -1,0 +1,51 @@
+extends layout
+
+block content
+	article#roster
+		h5=(type==1?'白':'黑')+'名单'
+			a.iconfont(@click='is_add=true') &#xe734;添加#{(type==1?'白':'黑')+'名单'}
+		div.table
+			ul.roster-list
+				li(v-for="obj in roster_list")
+					h4
+						label {{obj.tel}}
+						span {{obj.date.substring(0,obj.date.indexOf('.'))}}
+					h3
+						label{{obj.remark}}
+						a.iconfont.btn(@click="delete_confirm(obj)") &#xe645;
+
+
+		.alert-layer(v-if='is_add')
+			.alert-add.l-alert
+				.close-btn(@click="is_add=false") ×
+				if(type==1)
+					h4 输入想接的电话
+				if(type==-1)
+					h4 输入不想接的电话
+				ul
+					li
+						label 固话
+						a.choose(v-bind:class="[add_obj.type==1?'choose-c':'']",@click='add_obj.type=1')
+							i
+						input.m-txt(placeholder='区号',type='text',v-model='add_obj.tel1')
+						b.text-line ——
+						input.l-txt(placeholder="电话号码",type='text',v-model='add_obj.tel2')
+
+					li
+						label 手机
+						a.choose(v-bind:class="[add_obj.type==2?'choose-c':'']",@click='add_obj.type=2')
+							i
+						input.xl-txt(placeholder="11位手机号码",type='text',v-model='add_obj.tel3')
+					li
+						label 其他
+						a.choose(v-bind:class="[add_obj.type==3?'choose-c':'']",@click='add_obj.type=3')
+							i
+						input.xl-txt(placeholder="其他格式号码",type='text',v-model='add_obj.tel4')
+				br
+				ul
+					li
+						label 备注
+						input.xxl-txt(placeholder="请输入备注内容,如电话销售",type='text',v-model='add_obj.remark')
+				button(@click='add_roster()') 确定添加
+	script var roster_type=#{type}
+	script(src='/js/roster.js')

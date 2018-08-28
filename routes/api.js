@@ -1,0 +1,133 @@
+var express = require('express');
+var router = express.Router();
+
+/* GET home page. */
+router.get('/get_setting_type', function(req, res, next) {
+	  res.json({
+			success:true,
+			msg:'',
+			data:[
+				{
+					name:"房地产业",
+					list:[
+						{
+							name:"房产开发商",
+							value:false
+						},
+						{
+							name:"房屋中介",
+							value:false
+						},
+						{
+							name:"房屋装修",
+							value:false
+						}
+					]
+				},
+				{
+					name:"投资理财",
+					list:[
+						{
+							name:"证券交易",
+							value:false
+						},
+						{
+							name:"石油",
+							value:false
+						},
+						{
+							name:"贵金属",
+							value:false
+						},
+						{
+							name:"人身保险",
+							value:false
+						},
+						{
+							name:"车辆保险",
+							value:false
+						}
+					]
+				},
+				{
+					name:"销售业",
+					list:[
+						{
+							name:"家电数码",
+							value:false
+						},
+						{
+							name:"五金家具",
+							value:false
+						},
+						{
+							name:"电商",
+							value:false
+						},
+						{
+							name:"代理推广",
+							value:false
+						}
+					]
+				},
+				{
+					name:"其他",
+					list:[
+						{
+							name:"教育机构",
+							value:false
+						},
+						{
+							name:"信用卡",
+							value:false
+						},
+						{
+							name:"贷款",
+							value:false
+						},
+						{
+							name:"代开发票",
+							value:false
+						},
+						{
+							name:"商标注册",
+							value:false
+						},
+						{
+							name:"汽车保养",
+							value:false
+						}
+					]
+				}
+			]  	
+	  })
+});
+
+
+router.get('/get_setting_special',(req,res,next)=>{
+	res.json({
+		success:true,
+			msg:'',
+			data:[
+				{
+					name:"170*(虚拟运营商号码)",
+					value:false
+				},
+				{
+					name:"400*(服务热线)",
+					value:false
+				},
+				{
+					name:"00*(国际电话)",
+					value:false
+				},
+				{
+					name:"非浙江的固定电话",
+					value:false
+				}
+			]
+		
+	})
+})
+
+module.exports = router;

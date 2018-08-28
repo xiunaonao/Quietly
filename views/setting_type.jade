@@ -1,0 +1,18 @@
+extends layout
+
+block content
+	article#type
+		h5 请选择要拦截的类型
+		section
+			div(v-for="obj in type_list")
+				h4.btn(@click="open_or_close(obj)") {{obj.name}}
+					i.iconfont {{obj.isopen?'&#xe600':'&#xe601'}}
+
+				ul(v-if="obj.isopen")
+					li(v-for="obj2 in obj.list")
+						p
+							label {{obj2.name}}
+							aside.btn(@click="change_type(obj2,obj)",v-bind:class="[obj2.isopen?'open':'']")
+								span
+	script(src="/js/type.js") 
+
