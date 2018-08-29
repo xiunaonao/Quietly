@@ -15,8 +15,10 @@ var vapp=new Vue({
 	},
 	methods:{
 		get_roster_list:function(){
-			if(localStorage.roster){
+			if(localStorage.roster && JSON.parse(localStorage.roster)[this.type]){
 				this.roster_list=JSON.parse(localStorage.roster)[this.type];
+			}else{
+
 			}
 
 		},
