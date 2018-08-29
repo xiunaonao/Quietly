@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	article#special
+	article#special(v-cloak)
 		h5 请选择要拦截的类型
 		section
 			div
@@ -12,4 +12,4 @@ block content
 							label {{obj.name}}
 							aside.btn(@click="change_type(obj)",v-bind:class="[obj.isopen?'open':'']")
 								span
-	script(src='/js/special.js')
+	script(src='/js/special.js?v=#{_v}')

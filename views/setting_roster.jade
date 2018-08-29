@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	article#roster
+	article#roster(v-cloak)
 		h5=(type==1?'白':'黑')+'名单'
 			a.iconfont(@click='is_add=true') &#xe734;添加#{(type==1?'白':'黑')+'名单'}
 		div.table
@@ -48,4 +48,4 @@ block content
 						input.xxl-txt(placeholder="请输入备注内容,如电话销售",type='text',v-model='add_obj.remark')
 				button(@click='add_roster()') 确定添加
 	script var roster_type=#{type}
-	script(src='/js/roster.js')
+	script(src='/js/roster.js?v=#{_v}')

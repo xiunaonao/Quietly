@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	article#type
+	article#type(v-cloak)
 		h5 请选择要拦截的类型
 		section
 			div(v-for="obj in type_list")
@@ -14,5 +14,5 @@ block content
 							label {{obj2.name}}
 							aside.btn(@click="change_type(obj2,obj)",v-bind:class="[obj2.isopen?'open':'']")
 								span
-	script(src="/js/type.js") 
+	script(src="/js/type.js?v=#{_v}") 
 

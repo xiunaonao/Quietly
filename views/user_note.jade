@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	article#note
+	article#note(v-cloak)
 		h5 已为您拦截2次电话
 			//a
 		div.table
@@ -47,4 +47,4 @@ block content
 						label 备注
 						input.xxl-txt(placeholder="请输入备注内容,如电话销售",type='text',v-model='add_obj.remark')
 				button(@click='add_roster()') 确定添加
-	script(src='/js/note.js')
+	script(src='/js/note.js?v=#{_v}')

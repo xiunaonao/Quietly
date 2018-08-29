@@ -1,7 +1,9 @@
 var vapp=new Vue({
 	el:'#users',
 	data:{
-		show_index:-1
+		show_index:-1,
+		user_tel:'',
+		is_open:false,
 	},
 	methods:{
 		change_func_index:function(index){
@@ -9,9 +11,14 @@ var vapp=new Vue({
 				this.show_index=-1;
 			else
 				this.show_index=index;
+		},
+		open_func:function(){
+			this.is_open=!this.is_open;
+			localStorage.is_open=this.is_open?1:0;
 		}
 	},
 	mounted:function(){
-
+		this.user_tel=localStorage.user;
+		this.is_open=localStorage.is_open=='1'?true:false;
 	}
 })

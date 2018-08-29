@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	article#report
+	article#report(v-cloak)
 		h5 举报来电
 		.form
 			p
@@ -24,5 +24,5 @@ block content
 				input.xxxl-txt(type='text',placeholder='请填写其他类型',v-model='else_type')
 			div
 				button(@click='add_report') 举报来电
-	script(src='/js/report.js')
+	script(src='/js/report.js?v=#{_v}')
 				

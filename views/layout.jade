@@ -3,18 +3,18 @@ html
 	head
 		title= title
 		meta(name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no")
-		link(rel='stylesheet', href='/css/index.css')
-		script(src="/js/sys/mobile.js")
-		script(src="/js/sys/vue.js")
-		script(src="/js/sys/axios.min.js")
+		link(rel='stylesheet', href='/css/index.css?v=#{_v}')
+		script(src="/js/sys/mobile.js?v=#{_v}")
+		script(src="/js/sys/vue.js?v=#{_v}")
+		script(src="/js/sys/axios.min.js?v=#{_v}")
 		script.
-			window.onerror=function(e){
-				alert(JSON.stringify(e));
-			}
+			//- window.onerror=function(e){
+			//- 	alert(JSON.stringify(e));
+			//- }
 	body
 	block content
 
-	#export_dom
+	#export_dom(v-cloak)
 		.alert-layer(v-if='is_confirm || is_alert')
 			.alert-confirm.m-alert(v-if='is_confirm')
 				p {{alert_txt}}
@@ -26,6 +26,8 @@ html
 				//div
 					button(@click='confirm_btn()') 确定
 	script.
+		if(!localStorage.user && location.pathname!='/' && location.pathname!='/register')
+			location.href='/register?url='+escape(location.href);
 		var vapp_layer=new Vue({
 			el:'#export_dom',
 			data:{

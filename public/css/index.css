@@ -5,7 +5,9 @@ li{list-style:none;}
 .left{float:left;}
 .right{float:right;}
 b{font-weight:400;}
-a{text-decoration:none;color:inherit;}
+a{text-decoration:none;color:inherit;-webkit-tap-highlight-color: transparent;}
+input,button{-webkit-appearance:none;}
+[v-cloak]{display:none;}
 
 @font-face {
   font-family: 'iconfont';  /* project id 683815 */
@@ -31,7 +33,7 @@ a{text-decoration:none;color:inherit;}
 .alert-layer>div>.close-btn{position:absolute;right:0;bottom:100%;width:.3rem;height:.3rem;font-size:.4rem;line-height:.3rem;color:#FFF;margin-bottom: .1rem;}
 .alert-layer>div>h4{text-align:center;font-size:.16rem;}
 .alert-layer>div>ul>li{height:.4rem;}
-.alert-layer>div>ul>li>label{margin-right:.1rem;}
+.alert-layer>div>ul>li>label{margin-right:.1rem;line-height: .375rem;}
 .alert-layer>div button{height:.4rem;}
 .alert-layer>div>button{width:100%;}
 
@@ -59,12 +61,12 @@ button{color:#FFF;background:#00CD66;color:#FFF;border-width:0;border-style:soli
 
 .form{border-top:.01rem solid #CCC;}
 .form>*{height:.5rem;line-height:.5rem;padding:0 .15rem;box-sizing: border-box;}
-.form>p{border-bottom:.01rem solid #CCC;}
-.form>p>label{float:left;}
+.form>p{border-bottom:.01rem solid #CCC;position:relative;}
+.form>p>label{float:left;width: .7rem;}
 .form button{width:100%;height:.4rem;margin-top:.1rem;}
 .form input[type='text']{border-bottom:none 0 #000;}
 .form .choose{margin-top:.16rem;margin-left:.1rem;}
-
+.form input[type='button']{position:absolute;background:rgba(0,0,0,0);border:none 0 #000;height:.5rem;right: .15rem;color:#00CD66;}
 
 .menu>ul{position:fixed;bottom:0rem;width:100%;height:.5rem;border-top:.01rem solid #CCC;}
 .menu>ul>li{float:left;height:.5rem;line-height:.5rem;width:1.25rem;box-sizing: border-box;border-left:.01rem solid #CCC;text-align:center;}

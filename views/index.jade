@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	.menu#main_menu
+	.menu#main_menu(v-cloak)
 		ul
 			li(v-for='obj,i in menu')
 				a(v-if='!obj.value',@click='show_index=show_index!=i?i:-1') {{obj.name}}

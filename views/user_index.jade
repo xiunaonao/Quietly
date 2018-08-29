@@ -1,12 +1,12 @@
 extends layout
 
 block content
-	article#users.users
+	article#users.users(v-cloak)
 		.user-card
 			p
 				img.head
 			p
-				strong 18311112222
+				strong {{user_tel}}
 			p
 				small 有效期截至2018-10-29
 		nav.user-func
@@ -45,10 +45,10 @@ block content
 					li
 						p
 							label 电话防骚扰
-						aside.btn(@click="open_func()",v-bind:class="['open']")
+						aside.btn(@click="open_func()",v-bind:class="[is_open?'open':'']")
 							span
 					li
 						p
 							label 拦截记录
 						a.select-more.iconfont(href='/users/note') &#xe654;
-	script(src="/js/users.js")
+	script(src="/js/users.js?v=#{_v}")

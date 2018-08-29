@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 let settingRouter=require('./routes/setting')
 let reportRouter=require('./routes/report')
 let apiRouter=require('./routes/api')
+var ver=require('./package.json').version
 var app = express();
 
 // view engine setup
@@ -21,11 +22,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req,res,next)=>{
+	//console.log(req.url.indexOf('union_valid'))
+	res.locals._v=ver
+	next()
+})
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/setting',settingRouter)
 app.use('/report',reportRouter)
 app.use('/api',apiRouter)
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
