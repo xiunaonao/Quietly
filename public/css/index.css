@@ -5,16 +5,16 @@ li{list-style:none;}
 .left{float:left;}
 .right{float:right;}
 b{font-weight:400;}
+a{text-decoration:none;color:inherit;}
 
 @font-face {
   font-family: 'iconfont';  /* project id 683815 */
-  src: url('//at.alicdn.com/t/font_683815_ijb2dsddgxo.eot');
-  src: url('//at.alicdn.com/t/font_683815_ijb2dsddgxo.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_683815_ijb2dsddgxo.woff') format('woff'),
-  url('//at.alicdn.com/t/font_683815_ijb2dsddgxo.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_683815_ijb2dsddgxo.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_683815_jd0wrxnmau.eot');
+  src: url('//at.alicdn.com/t/font_683815_jd0wrxnmau.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_683815_jd0wrxnmau.woff') format('woff'),
+  url('//at.alicdn.com/t/font_683815_jd0wrxnmau.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_683815_jd0wrxnmau.svg#iconfont') format('svg');
 }
-
 
 
 .iconfont{
@@ -32,18 +32,21 @@ b{font-weight:400;}
 .alert-layer>div>h4{text-align:center;font-size:.16rem;}
 .alert-layer>div>ul>li{height:.4rem;}
 .alert-layer>div>ul>li>label{margin-right:.1rem;}
+.alert-layer>div button{height:.4rem;}
 .alert-layer>div>button{width:100%;}
 
 .choose{border:solid #333 .01rem;border-radius:.15rem;background:#FFF;width:.15rem;height:.15rem;float:left;margin-top:.1rem;margin-right:.1rem;}
-.choose i{float:left;width:.11rem;height:.11rem;border:solid #FFF .02rem;background:#FFA500;border-radius: .1rem;-webkit-transform:scale(0);}
+.choose i{float:left;width:.11rem;height:.11rem;border:solid #FFF .02rem;background:#00CD66;border-radius: .1rem;-webkit-transform:scale(0);}
 .choose-c i{-webkit-transform:scale(1);}
 .m-alert{width:2rem;}
 .l-alert{width:3rem;}
 .alert-confirm,.alert-alert{text-align: center;}
 .alert-confirm button{width:.75rem;margin:.05rem;}
+.select-more{float:right;margin-right:.15rem;}
+
 
 input[type='text']{border:none #CCC 0;border-bottom:#CCC solid .01rem;height:.3rem;outline:none;text-indent:.1rem;}
-button{color:#FFF;background:#FFA500;color:#FFF;border-width:0;border-style:solid;border-radius:.02rem;}
+button{color:#FFF;background:#00CD66;color:#FFF;border-width:0;border-style:solid;border-radius:.02rem;}
 .m-txt{width:.5rem;}
 .l-txt{width:1.1rem;}
 .xl-txt{width:2rem;}
@@ -62,7 +65,14 @@ button{color:#FFF;background:#FFA500;color:#FFF;border-width:0;border-style:soli
 .form input[type='text']{border-bottom:none 0 #000;}
 .form .choose{margin-top:.16rem;margin-left:.1rem;}
 
-article h5{height:.4rem;line-height:.4rem;padding-left:.15rem;font-weight:200;}
+
+.menu>ul{position:fixed;bottom:0rem;width:100%;height:.5rem;border-top:.01rem solid #CCC;}
+.menu>ul>li{float:left;height:.5rem;line-height:.5rem;width:1.25rem;box-sizing: border-box;border-left:.01rem solid #CCC;text-align:center;}
+.menu>ul>li:first-child{border-left-style:none;}
+.menu>ul>li>ul{position:absolute;bottom:100%;text-align:center;border-style:none solid none solid;border-width:.01rem;border-color:#CCC;width:1.25rem;}
+.menu>ul>li:first-child>ul{border-left-style:none;}
+.menu>ul>li>ul>li{height:.5rem;border-top:.01rem solid #CCC;}
+article>h5{height:.4rem;line-height:.4rem;padding-left:.15rem;font-weight:200;}
 section h4{height:.4rem;line-height:.4rem;background:#EFEFEF;padding-left:.15rem;font-weight:400;border-style:none none solid none;border-color:#CCC;border-width:.01rem;}
 section h6{border-top:.01rem solid #CCC;height:0;}
 section h4 i{float:right;margin-right:.15rem;}
@@ -71,17 +81,30 @@ section div:first-child h4{border-top:solid #CCC .01rem;}
 section ul li p{float:left;}
 section ul li aside{float:right;margin-right:.15rem;width:.4rem;height:.2rem;background:#EEE;border-radius:.1rem;margin-top:.1rem;cursor:pointer;-webkit-tap-highlight-color: transparent;}
 section ul li aside span{float:left;width:.2rem;height:.2rem;border-radius:.1rem;background:#FFF;box-shadow:#CCC 0 0 3px;-webkit-transition:margin .5s;}
-section ul li .open{background:#FFA500;}
-section ul li .open span{margin-left:.2rem;box-shadow:#FFA500 0 0 .01rem;}
+section ul li .open{background:#00CD66;}
+section ul li .open span{margin-left:.2rem;box-shadow:#00CD66 0 0 .01rem;}
 
-#roster h5 a{float:right;margin-right:.15rem;font-size:.13rem;color:#FFA500;}
-.roster-list{border-top:solid #CCC .01rem;}
-.roster-list li{height:.5rem;line-height:.15rem;border-bottom:solid #CCC .01rem;margin:0 .15rem;}
-.roster-list li>*{font-weight:400;}
-.roster-list li>h4{line-height:.3rem;}
-.roster-list li>h4>span{float:right;color:#AAA;}
-.roster-list li>h3>a{float:right;}
+#roster h5 a{float:right;margin-right:.15rem;font-size:.13rem;color:#00CD66;}
+.table ul{border-top:solid #CCC .01rem;}
+.table li{height:.5rem;line-height:.15rem;border-bottom:solid #CCC .01rem;margin:0 .15rem;}
+.table li>*{font-weight:400;}
+.table li>h4{line-height:.3rem;}
+.table li>h4>span{float:right;color:#AAA;}
+.table li>h3>a{float:right;}
+.table li>h3>a>span{color:#00CD66;margin-left:.1rem;}
 
-.user-card{padding:.2rem;background:#FFA500;color:#FFF;}
-.user-card>*{text-align:center;margin-bottom:.1rem;}
-.user-card .head{width:.5rem;height:.5rem;border-radius:.5rem;border:solid #FFF .01rem;}
+.user-card{padding:.1rem .15rem;background:url(/img/users_banner.png) 0 0/3.75rem no-repeat;color:#FFF;height:1.8rem;box-sizing:border-box;}
+.user-card>*{text-align:center;}
+.user-card .head{width:.7rem;height:.7rem;border-radius:.5rem;border:solid #FFF .01rem;margin-top: .19rem;margin-bottom:.25rem;}
+.user-card strong{font-size:.18rem;font-weight:300;}
+.user-card small{font-size:.12rem;font-weight:300;margin-top:.08rem;}
+.user-func{padding-bottom:.1rem;border-bottom:.1rem solid #F5F5F5;}
+.user-func h5{font-weight:300;color:#AAA;text-align:center;margin-top:.15rem;}
+.user-func ul{height:.7rem;margin:.15rem 0;}
+.user-func ul li{float:left;width:.7rem;margin:0 0 0 .2rem;text-align: center;}
+.user-func ul li h6{font-size:.12rem;font-weight:300;}
+.user-func img{width:.5rem;height:.5rem;}
+.user-func hgroup{background:#EEE;margin:.15rem;border-radius:.05rem;padding:.15rem;position:relative;}
+.user-func hgroup i{position:absolute;top:-.05rem;width:.1rem;height:.1rem;-webkit-transform:rotate(45deg);background:#EEE;}
+.user-func hgroup h3{font-weight:300;font-size:.13rem;margin-bottom:.11rem;}
+.user-func hgroup h4{color:#BBB;font-weight:300;font-size:.13rem;}

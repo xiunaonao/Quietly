@@ -1,3 +1,37 @@
 extends layout
 
 block content
+	.menu#main_menu
+		ul
+			li(v-for='obj,i in menu')
+				a(v-if='!obj.value',@click='show_index=show_index!=i?i:-1') {{obj.name}}
+				a(v-if='obj.value',@click='show_index=-1',v-bind:href='obj.value') {{obj.name}}
+				ul(v-if='obj.list && show_index==i')
+					li(v-for='obj2 in obj.list')
+						a(v-bind:href='obj2.value') {{obj2.name}}
+	script.
+		var vapp=new Vue({
+			el:'#main_menu',
+			data:{
+				show_index:-1,
+				menu:[
+					{
+						name:'拦截设置',
+						list:[
+							{name:'拦截分类',value:'/setting/type'},
+							{name:'拦截号段',value:'/setting/special'},
+							{name:'黑名单管理',value:'/setting/roster?type=-1'},
+							{name:'白名单管理',value:'/setting/roster?type=1'}
+						]
+					},
+					{
+						name:'举报来电',
+						value:'/report/'
+					},
+					{
+						name:"我的信息",
+						value:'/users/'
+					}
+				]
+			}
+		})
