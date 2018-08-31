@@ -48,7 +48,7 @@ input,button{-webkit-appearance:none;}
 .select-more{float:right;margin-right:.15rem;}
 
 
-input[type='text']{border:none #CCC 0;border-bottom:#CCC solid .01rem;height:.3rem;outline:none;text-indent:.1rem;}
+input[type='text']{border:none #CCC 0;border-bottom:#CCC solid .01rem;height:.3rem;outline:none;text-indent:.1rem;border-radius:0;}
 button{color:#FFF;background:#00CD66;color:#FFF;border-width:0;border-style:solid;border-radius:.02rem;}
 .m-txt{width:.5rem;}
 .l-txt{width:1.1rem;}

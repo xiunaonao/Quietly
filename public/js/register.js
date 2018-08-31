@@ -24,11 +24,11 @@ var vapp=new Vue({
 			localStorage.user=this.tel
 			vapp_layer.alert('绑定成功');
 			setTimeout(function(){
-				location.href=backurl.value;
+				location.href=(backurl.value)?backurl.value:'/';
 			},1500)
 		}
 	},
 	mounted:function(){
-
+		
 	}
 })

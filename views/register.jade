@@ -1,7 +1,12 @@
 extends layout
 
 block content
+	script.
+		if(localStorage.user){
+			location.href='/';
+		}
 	article#register(v-cloak)
+
 		h5 举报来电
 		.form
 			p
