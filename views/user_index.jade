@@ -19,15 +19,15 @@ block content
 				li
 					a(@click='change_func_index(1)')
 						img(src="/img/func_txt_inter.png")			
-						h6 国际电话		
+						h6 国际电话
 				li
 					a(@click='change_func_index(2)')
 						img(src="/img/func_txt_400.png")
-						h6 400电话					
+						h6 400电话			
 				li
 					a(@click='change_func_index(3)')
 						img(src="/img/func_txt_other.png")		
-						h6 省外电话		
+						h6 省外电话
 			hgroup(v-if='show_index!=-1') 
 				i(v-bind:style="{left:(.3+show_index*.9)+'rem'}") &nbsp;
 				h3(v-if='show_index==0') 黑名单号码拦截	
