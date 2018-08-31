@@ -25,7 +25,7 @@ router.get('/get_setting_type', function(req, res, next) {
 					]
 				},
 				{
-					name:"投资理财",
+					name:"保险理财",
 					list:[
 						{
 							name:"证券交易",
@@ -50,7 +50,7 @@ router.get('/get_setting_type', function(req, res, next) {
 					]
 				},
 				{
-					name:"销售业",
+					name:"广告推销",
 					list:[
 						{
 							name:"家电数码",
@@ -122,7 +122,7 @@ router.get('/get_setting_special',(req,res,next)=>{
 					value:false
 				},
 				{
-					name:"非浙江的固定电话",
+					name:"非本省的固定电话",
 					value:false
 				}
 			]

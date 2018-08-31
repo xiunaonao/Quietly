@@ -2,6 +2,29 @@ extends layout
 
 block content
 	.menu#main_menu(v-cloak)
+		.notice-list
+			ul
+				li(onclick="location.href='/users/note'")
+					h1 服务通知
+					time 8月29日
+					h5 骚扰电话拦截
+					h4 标题：防骚扰平台
+					h4 日期：2018-08-28 13:33
+					h4 拦截一通来电,类型:广告推销，被标记31次
+					h4 号码:0571-44444444
+					p 详情
+						a.select-more.iconfont(href='/users/note') &#xe654;
+				li(onclick="location.href='/users/note'")
+					h1 服务通知
+					time 8月29日
+					h5 诈骗电话拦截
+					h4 标题：防骚扰平台
+					h4 日期：2018-08-28 10:33
+					h4 拦截一通来电,类型:电信诈骗，被标记73次
+					h4 号码:18313133131
+					p 详情
+						a.select-more.iconfont(href='/users/note') &#xe654;
+
 		ul
 			li(v-for='obj,i in menu')
 				a(v-if='!obj.value',@click='show_index=show_index!=i?i:-1') {{obj.name}}
