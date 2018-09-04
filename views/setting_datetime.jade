@@ -1,0 +1,23 @@
+extends layout
+
+block content
+	article#rosterlist
+		h5 拦截时间设置
+		section
+			h6
+			div
+				ul
+					li
+						p
+							label 时间选择
+						a.select-more.iconfont(href='',) &#xe654;
+						select.right-select
+							option 每天
+							option 工作日
+							option 休息日
+							option 自定义
+					li
+						p
+							label 开始时间
+						a.select-more.iconfont() &#xe654;
+						input.right-select(type='time')

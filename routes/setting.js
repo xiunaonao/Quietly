@@ -14,6 +14,14 @@ router.get('/special',(req,res,next)=>{
 	res.render('setting_special',{title:'特殊号码屏蔽'})
 })
 
+router.get('/rosterlist',(req,res,next)=>{
+	res.render('setting_rosterlist',{title:'拦截号码'})
+})
+
+router.get('/datetime',(req,res,next)=>{
+	res.render('setting_datetime',{title:'拦截时间'})
+})
+
 router.get('/roster',(req,res,next)=>{
 	let type=-1
 	if(req.query.type==1){

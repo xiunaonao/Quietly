@@ -8,64 +8,86 @@ router.get('/get_setting_type', function(req, res, next) {
 			msg:'',
 			data:[
 				{
-					name:"房地产业",
+					name:"疑似诈骗",
+					list:[{
+						name:"疑似诈骗",
+						value:false,
+					}]
+				},
+				{
+					name:"疑似推销",
+					list:[{
+						name:"疑似推销",
+						value:false,
+					}]
+				},
+				{
+					name:"金融销售类",
 					list:[
 						{
-							name:"房产开发商",
+							name:"贷款",
 							value:false
 						},
 						{
-							name:"房屋中介",
+							name:"理财",
 							value:false
 						},
 						{
-							name:"房屋装修",
+							name:"信用卡",
+							value:false
+						},
+						{
+							name:"股票",
+							value:false
+						},
+						{
+							name:"基金",
+							value:false
+						},
+						{
+							name:"债券",
+							value:false
+						},
+						{
+							name:"保险",
 							value:false
 						}
 					]
 				},
 				{
-					name:"保险理财",
+					name:"广告推销类",
 					list:[
 						{
-							name:"证券交易",
+							name:"医疗类(包括医疗美容，保健食品，母婴保健等)",
 							value:false
 						},
 						{
-							name:"石油",
+							name:"教育类(包括培训机构，招生，游学等)",
 							value:false
 						},
 						{
-							name:"贵金属",
+							name:"旅游类(包含境内外旅游)",
 							value:false
 						},
 						{
-							name:"人身保险",
+							name:"交通类(包含汽车销售，汽车保养，二手车买卖等)",
 							value:false
 						},
 						{
-							name:"车辆保险",
+							name:"其他",
 							value:false
-						}
+						},
 					]
 				},
 				{
-					name:"广告推销",
+					name:"房产营销类",
 					list:[
 						{
-							name:"家电数码",
+							name:"售房",
 							value:false
 						},
 						{
-							name:"五金家具",
-							value:false
-						},
-						{
-							name:"电商",
-							value:false
-						},
-						{
-							name:"代理推广",
+							name:"租房",
 							value:false
 						}
 					]
@@ -74,31 +96,11 @@ router.get('/get_setting_type', function(req, res, next) {
 					name:"其他",
 					list:[
 						{
-							name:"教育机构",
-							value:false
-						},
-						{
-							name:"信用卡",
-							value:false
-						},
-						{
-							name:"贷款",
-							value:false
-						},
-						{
-							name:"代开发票",
-							value:false
-						},
-						{
-							name:"商标注册",
-							value:false
-						},
-						{
-							name:"汽车保养",
+							name:"其他",
 							value:false
 						}
 					]
-				}
+				},
 			]  	
 	  })
 });
@@ -110,15 +112,19 @@ router.get('/get_setting_special',(req,res,next)=>{
 			msg:'',
 			data:[
 				{
-					name:"170*(虚拟运营商号码)",
+					name:"虚拟运营商",
 					value:false
 				},
 				{
-					name:"400*(服务热线)",
+					name:'95号段',
 					value:false
 				},
 				{
-					name:"00*(国际电话)",
+					name:"400电话",
+					value:false
+				},
+				{
+					name:"国际电话",
 					value:false
 				},
 				{

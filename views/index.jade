@@ -42,21 +42,31 @@ block content
 				show_index:-1,
 				menu:[
 					{
-						name:'拦截设置',
+						name:'接听意愿',
 						list:[
-							{name:'拦截分类',value:'/setting/type'},
+							{name:'拦截种类',value:'/setting/type'},
 							{name:'拦截号段',value:'/setting/special'},
-							{name:'黑名单管理',value:'/setting/roster?type=-1'},
-							{name:'白名单管理',value:'/setting/roster?type=1'}
+							{name:'拦截号码',value:'/setting/rosterlist'},
+							{name:'拦截时间',value:'/setting/datetime'},
+							{name:'拦截模式',value:'/setting/special'},
+							{name:'拦截通知',value:'/setting/special'}
 						]
 					},
 					{
-						name:'举报来电',
-						value:'/report/'
+						name:'个人管理',
+						list:[
+							{name:'我的',value:'/users/'},
+							{name:'号码标记',value:'/report/'},
+							{name:'拦截记录',value:'/users/note'}
+						]
 					},
 					{
-						name:"我的信息",
-						value:'/users/'
+						name:"信息管理",
+						list:[
+							{name:'公众号介绍',value:''},
+							{name:'行业信息',value:''},
+							{name:'相关新闻',value:''},
+						]
 					}
 				]
 			}

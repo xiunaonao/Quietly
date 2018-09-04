@@ -4,11 +4,12 @@ block content
 	article#type(v-cloak)
 		h5 请选择要拦截的类型
 		section
+			h6(v-if='type_list.length>0 && type_list[0].list.length==1')
 			div(v-for="obj in type_list")
-				h4.btn(@click="open_or_close(obj)") {{obj.name}}
+				h4.btn(v-if="obj.list.length>1",@click="open_or_close(obj)") {{obj.name}}
 					i.iconfont {{obj.isopen?'&#xe600':'&#xe601'}}
 
-				ul(v-if="obj.isopen")
+				ul(v-if="obj.isopen || obj.list.length==1")
 					li(v-for="obj2 in obj.list")
 						p
 							label {{obj2.name}}

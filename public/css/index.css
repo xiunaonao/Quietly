@@ -59,6 +59,7 @@ button{color:#FFF;background:#00CD66;color:#FFF;border-width:0;border-style:soli
 
 .gray-bg{background:#999;}
 
+.right-select{float:right;height:.4rem;text-align:right;-webkit-appearance:none;border:none 0 #000;position:absolute;background:rgba(0,0,0,0);right:0;padding-right:.35rem;direction:rtl;outline:none;-webkit-tap-highlight-color: transparent;}
 
 .form{border-top:.01rem solid #CCC;}
 .form>*{height:.5rem;line-height:.5rem;padding:0 .15rem;box-sizing: border-box;}
@@ -91,13 +92,14 @@ article>h5{height:.4rem;line-height:.4rem;padding-left:.15rem;font-weight:200;}
 section h4{height:.4rem;line-height:.4rem;background:#EFEFEF;padding-left:.15rem;font-weight:400;border-style:none none solid none;border-color:#CCC;border-width:.01rem;}
 section h6{border-top:.01rem solid #CCC;height:0;}
 section h4 i{float:right;margin-right:.15rem;}
-section ul li{height:.4rem;border-bottom:#CCC solid .01rem;line-height:.4rem;text-indent:.25rem;}
+section ul li{height:.4rem;border-bottom:#CCC solid .01rem;line-height:.4rem;text-indent:.25rem;position:relative;}
 section div:first-child h4{border-top:solid #CCC .01rem;}
 section ul li p{float:left;}
 section ul li aside{float:right;margin-right:.15rem;width:.4rem;height:.2rem;background:#EEE;border-radius:.1rem;margin-top:.1rem;cursor:pointer;-webkit-tap-highlight-color: transparent;}
 section ul li aside span{float:left;width:.2rem;height:.2rem;border-radius:.1rem;background:#FFF;box-shadow:#CCC 0 0 3px;-webkit-transition:margin .5s;}
 section ul li .open{background:#00CD66;}
 section ul li .open span{margin-left:.2rem;box-shadow:#00CD66 0 0 .01rem;}
+
 
 #roster h5 a{float:right;margin-right:.15rem;font-size:.13rem;color:#00CD66;}
 .table ul{border-top:solid #CCC .01rem;}
