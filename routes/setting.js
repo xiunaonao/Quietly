@@ -22,6 +22,14 @@ router.get('/datetime',(req,res,next)=>{
 	res.render('setting_datetime',{title:'拦截时间'})
 })
 
+router.get('/mode',(req,res,next)=>{
+	res.render('setting_mode',{title:'拦截模式'})
+})
+
+router.get('/notice',(req,res,next)=>{
+	res.render('setting_notice',{title:'拦截通知'})
+})
+
 router.get('/roster',(req,res,next)=>{
 	let type=-1
 	if(req.query.type==1){

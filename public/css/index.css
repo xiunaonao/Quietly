@@ -60,7 +60,10 @@ button{color:#FFF;background:#00CD66;color:#FFF;border-width:0;border-style:soli
 .gray-bg{background:#999;}
 
 .right-select{float:right;height:.4rem;text-align:right;-webkit-appearance:none;border:none 0 #000;position:absolute;background:rgba(0,0,0,0);right:0;padding-right:.35rem;direction:rtl;outline:none;-webkit-tap-highlight-color: transparent;}
-
+.form .right-select{height:.5rem;line-height:.5rem;padding-right: .5rem;}
+.week{float:right;margin-right:.2rem;font-weight:100;font-size:.1rem;}
+.week a{float:left;width:.25rem;height:.25rem;border-radius:.25rem;background:#CCC;color:#FFF;text-align:center;line-height:.25rem;margin:.075rem .05rem;text-indent:0;box-shadow:#CCC 0 0 .05rem;}
+.week .c{background:#00CD66;box-shadow:#00CD66 0 0 .05rem;}
 .form{border-top:.01rem solid #CCC;}
 .form>*{height:.5rem;line-height:.5rem;padding:0 .15rem;box-sizing: border-box;}
 .form>p{border-bottom:.01rem solid #CCC;position:relative;}
@@ -99,7 +102,7 @@ section ul li aside{float:right;margin-right:.15rem;width:.4rem;height:.2rem;bac
 section ul li aside span{float:left;width:.2rem;height:.2rem;border-radius:.1rem;background:#FFF;box-shadow:#CCC 0 0 3px;-webkit-transition:margin .5s;}
 section ul li .open{background:#00CD66;}
 section ul li .open span{margin-left:.2rem;box-shadow:#00CD66 0 0 .01rem;}
-
+section ul li input[type='text']{float:right;text-align:right;margin-right:.35rem;border-bottom:none 0 #000;height:.4rem;}
 
 #roster h5 a{float:right;margin-right:.15rem;font-size:.13rem;color:#00CD66;}
 .table ul{border-top:solid #CCC .01rem;}
