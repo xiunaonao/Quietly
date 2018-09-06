@@ -56,7 +56,7 @@ router.get('/get_setting_type', function(req, res, next) {
 							value:false
 						},
 						{
-							name:"交通类(包含汽车销售，汽车保养，二手车买卖等)",
+							name:"交通类(包含汽车销售，保养，二手车买卖等)",
 							value:false
 						},
 						{
