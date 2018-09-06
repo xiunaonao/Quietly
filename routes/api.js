@@ -8,20 +8,6 @@ router.get('/get_setting_type', function(req, res, next) {
 			msg:'',
 			data:[
 				{
-					name:"疑似诈骗",
-					list:[{
-						name:"疑似诈骗",
-						value:false,
-					}]
-				},
-				{
-					name:"疑似推销",
-					list:[{
-						name:"疑似推销",
-						value:false,
-					}]
-				},
-				{
 					name:"金融销售类",
 					list:[
 						{
@@ -95,6 +81,14 @@ router.get('/get_setting_type', function(req, res, next) {
 				{
 					name:"其他",
 					list:[
+						{
+							name:"疑似诈骗",
+							value:false,
+						},
+						{
+							name:"疑似诈骗",
+							value:false,
+						},
 						{
 							name:"其他",
 							value:false
