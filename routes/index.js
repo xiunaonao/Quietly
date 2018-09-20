@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var jsSHA = require('jssha');
+var crypto = require('crypto')
+
 /* GET home page. */
 router.get(['/index','/'], function(req, res, next) {
   res.render('index', { title: '防骚扰平台' });
@@ -19,22 +20,19 @@ router.get('/wechat',(req,res,next)=>{
 	var echostr   = req.query.echostr;
 	var nonce     = req.query.nonce;
 
-	var oriArray = new Array();
-	oriArray[0] = nonce;
-	oriArray[1] = timestamp;
-	oriArray[2] = token;
-	oriArray.sort();
-
-	var original = oriArray.join('');
-	res.json({success:true})
-	return
-	var shaObj = new jsSHA(original, 'TEXT');
-	var scyptoString=shaObj.getHash('SHA-1', 'HEX'); 
-	if(scyptoString==signature){
-		res.json({success:true})
+	if(check(timestamp,nonce,signature,token)){
+		res.send(echostr)
 	}else{
-		res.json({success:false})
+		res.send('not wechat')
 	}
 })
+
+ 
+function check(timestamp,nonce,signature,token){
+	var currSign,tmp;
+	tmp = [token,timestamp,nonce].sort().join("");
+	currSign = crypto.createHash("sha1").update(tmp).digest("hex");
+	return (currSign === signature);  
+}
 
 module.exports = router;
