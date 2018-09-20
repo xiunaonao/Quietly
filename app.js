@@ -28,6 +28,29 @@ app.use((req,res,next)=>{
 	next()
 })
 
+app.use((req,res,next)=>{
+  let url=req.url.toLowerCase();
+  if(url.indexOf('/setting')==0 || url.indexOf('/report')==0 || url.indexOf('/users')==0){
+    let tel=req.cookies['t']
+    let password=req.cookies['p']
+    let apitime=req.cookies['a']
+    if(!tel){
+      res.redirect(302,'/register?url='+url)
+      return;
+    }else if(!apitime){
+      let east_api=require('./server/east_api')
+      east_api.login(tel,password,res,(success)=>{ 
+          if(success)
+            next()
+      })
+      return
+    }
+  }
+  next()
+})
+
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/setting',settingRouter)

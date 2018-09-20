@@ -7,9 +7,13 @@ router.get(['/index','/'], function(req, res, next) {
 });
 
 router.get('/register',(req,res,next)=>{
-	console.log(req.query.url)
 	
 	res.render('register',{title:'用户绑定',url:req.query.url})
+})
+
+
+router.get('/wechat',(req,res,next)=>{
+	res.json({success:true})
 })
 
 module.exports = router;

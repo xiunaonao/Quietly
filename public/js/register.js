@@ -2,7 +2,8 @@ var vapp=new Vue({
 	el:'#register',
 	data:{
 		post_time:0,
-		tel:''
+		tel:'',
+		pwd:''
 	},
 	methods:{
 		post_code:function(){
@@ -21,11 +22,22 @@ var vapp=new Vue({
 				vapp_layer.alert('请填写手机号码');
 				return;
 			}
-			localStorage.user=this.tel
-			vapp_layer.alert('绑定成功');
-			setTimeout(function(){
-				location.href=(backurl.value)?backurl.value:'/';
-			},1500)
+			if(!this.pwd){
+				vapp_layer.alert('请填写密码');
+				return;
+			}
+			var scope=this;
+			axios.post('/api/register',{
+				name:scope.tel,
+				password:scope.pwd
+			}).then(function(res){
+				if(res.data.success){
+					vapp_layer.alert('绑定成功');
+					setTimeout(function(){
+						location.href=next_url?next_url:''
+					},1500)
+				}
+			})
 		}
 	},
 	mounted:function(){

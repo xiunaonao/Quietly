@@ -26,8 +26,8 @@ html
 				//div
 					button(@click='confirm_btn()') 确定
 	script.
-		if(!localStorage.user && location.pathname!='/' && location.pathname!='/register')
-			location.href='/register?url='+escape(location.href);
+		//- if(!localStorage.user && location.pathname!='/' && location.pathname!='/register')
+		//- 	location.href='/register?url='+escape(location.href);
 		var vapp_layer=new Vue({
 			el:'#export_dom',
 			data:{

@@ -4,16 +4,23 @@ block content
 	article#type(v-cloak)
 		h5 请选择要拦截的类型
 		section
-			h6(v-if='type_list.length>0 && type_list[0].list.length==1')
-			div(v-for="obj in type_list")
-				h4.btn(v-if="obj.list.length>1",@click="open_or_close(obj)") {{obj.name}}
-					i.iconfont {{obj.isopen?'&#xe600':'&#xe601'}}
+			//h6(v-if='type_list.length>0 && type_list[0].list.length==1')
+			h6
+			div
+				ul
+					li(v-for="obj in type_list")
+						p
+							label {{obj.name}}
+							aside.btn(@click="change_type(obj)",v-bind:class="[!obj.isWished?'open':'']")
+								span
+				//h4.btn(v-if="obj.list.length>1",@click="open_or_close(obj)") {{obj.name}}
+				//	i.iconfont {{obj.isopen?'&#xe600':'&#xe601'}}
 
-				ul(v-if="obj.isopen || obj.list.length==1")
+				//ul(v-if="obj.isWished")
 					li(v-for="obj2 in obj.list")
 						p
 							label {{obj2.name}}
-							aside.btn(@click="change_type(obj2,obj)",v-bind:class="[obj2.isopen?'open':'']")
+							aside.btn(@click="change_type(obj)",v-bind:class="[obj2.isopen?'open':'']")
 								span
-	script(src="/js/type.js?v=#{_v}") 
+	script(src="/js/type.js?v=#{_v}")
 
