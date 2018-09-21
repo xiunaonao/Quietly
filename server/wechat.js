@@ -31,12 +31,12 @@ function set_menu(callback){
 		           	{    
 		               "type":"view",
 		               "name":"拦截种类",
-		               "url":"http://210.56.209.61/setting/type"
+		               "url":"http://a.com/setting/type"
 		            },
 		            {
 		               "type":"view",
 		               "name":"拦截号码",
-		               "key":"http://210.56.209.61/setting/rosterlist"
+		               "key":"http://a.com/setting/rosterlist"
 		            }]
 		       },{
 		       		"name":"个人管理",
@@ -44,17 +44,17 @@ function set_menu(callback){
 			       		{
 			       			"type":"view",
 			       			"name":"我的",
-			       			"url":"http://210.56.209.61/users/"	
+			       			"url":"http://a.com/users/"	
 			       		},
 			       		{
 			       			"type":"view",
 			       			"name":"号码标记",
-			       			"url":"http://210.56.209.61/report/"	
+			       			"url":"http://a.com/report/"	
 			       		},
 			       		{
 			       			"type":"view",
 			       			"name":"拦截记录",
-			       			"url":"http://210.56.209.61/users/note"	
+			       			"url":"http://a.com/users/note"	
 			       		}
 		       		]
 		       },{
@@ -63,17 +63,17 @@ function set_menu(callback){
 			       	{
 			       		"type":"view",
 			       		"name":"公众号介绍",
-			       		"url":"http://210.56.209.61/build"
+			       		"url":"http://a.com/build"
 			       	},
 			       	{
 			       		"type":"view",
 			       		"name":"行业信息",
-			       		"url":"http://210.56.209.61/build"
+			       		"url":"http://a.com/build"
 			       	},
 			       	{
 			       		"type":"view",
 			       		"name":"相关新闻",
-			       		"url":"http://210.56.209.61/build"
+			       		"url":"http://a.com/build"
 			       	}
 		       	]
 		       }]
