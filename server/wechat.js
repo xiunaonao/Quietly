@@ -31,12 +31,12 @@ function set_menu(callback){
 		           	{    
 		               "type":"view",
 		               "name":"拦截种类",
-		               "url":"http://a.com/setting/type"
+		               "url":"http://210.56.209.61/setting/type"
 		            },
 		            {
 		               "type":"view",
 		               "name":"拦截号码",
-		               "key":"http://a.com/setting/rosterlist"
+		               "key":"http://210.56.209.61/setting/rosterlist"
 		            }]
 		       },{
 		       		"name":"个人管理",
@@ -44,17 +44,17 @@ function set_menu(callback){
 			       		{
 			       			"type":"view",
 			       			"name":"我的",
-			       			"url":"http://a.com/users/"	
+			       			"url":"http://210.56.209.61/users/"	
 			       		},
 			       		{
 			       			"type":"view",
 			       			"name":"号码标记",
-			       			"url":"http://a.com/report/"	
+			       			"url":"http://210.56.209.61/report/"	
 			       		},
 			       		{
 			       			"type":"view",
 			       			"name":"拦截记录",
-			       			"url":"http://a.com/users/note"	
+			       			"url":"http://210.56.209.61/users/note"	
 			       		}
 		       		]
 		       },{
@@ -63,24 +63,24 @@ function set_menu(callback){
 			       	{
 			       		"type":"view",
 			       		"name":"公众号介绍",
-			       		"url":"http://a.com/build"
+			       		"url":"http://210.56.209.61/build"
 			       	},
 			       	{
 			       		"type":"view",
 			       		"name":"行业信息",
-			       		"url":"http://a.com/build"
+			       		"url":"http://210.56.209.61/build"
 			       	},
 			       	{
 			       		"type":"view",
 			       		"name":"相关新闻",
-			       		"url":"http://a.com/build"
+			       		"url":"http://210.56.209.61/build"
 			       	}
 		       	]
 		       }]
 		 }
 
 
-		post(url,menu,(body)=>{
+		post(url,{"button":[{"name":"接听意愿","sub_button":[]]}},(body)=>{
 			callback(body)
 		}) 
 	})
