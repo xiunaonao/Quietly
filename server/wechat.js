@@ -80,9 +80,9 @@ function set_menu(callback){
 		 }
 
 
-		post(url,{"button":[{"name":"接听意愿","sub_button":[{"type":"view",
+		post(url,{"button":[{"name":"拦截种类","sub_button":[{"type":"view",
                "name":"搜索",
-               "url":"http://www.soso.com/"}]}]},(body)=>{
+               "url":"http://210.56.209.61/setting/type"}]}]},(body)=>{
 			callback(body)
 		}) 
 	})
