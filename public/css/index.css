@@ -113,7 +113,7 @@ section ul li input[type='text'],section ul li input[type='password']{float:righ
 .table li>h3>a{float:right;}
 .table li>h3>a>span{color:#00CD66;margin-left:.1rem;}
 
-.user-card{padding:.1rem .15rem;background:url(/img/users_banner.png) 0 0/3.75rem no-repeat;color:#FFF;height:1.8rem;box-sizing:border-box;}
+.user-card{padding:.1rem .15rem;background:url(/img/users_banner.jpg) 0 0/3.75rem no-repeat;color:#FFF;height:1.8rem;box-sizing:border-box;}
 .user-card>*{text-align:center;}
 .user-card .head{width:.7rem;height:.7rem;border-radius:.5rem;border:solid #FFF .01rem;margin-top: .19rem;margin-bottom:.25rem;}
 .user-card strong{font-size:.18rem;font-weight:300;}
