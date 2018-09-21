@@ -36,7 +36,7 @@ function set_menu(callback){
 		            {
 		               "type":"view",
 		               "name":"拦截号码",
-		               "key":"http://210.56.209.61/setting/rosterlist"
+		               "url":"http://210.56.209.61/setting/rosterlist"
 		            }]
 		       },{
 		       		"name":"个人管理",
@@ -78,11 +78,17 @@ function set_menu(callback){
 		       	]
 		       }]
 		 }
+		//  let menu={
+		//  	"button":[
+		//  	{"name":"拦截种类","sub_button":[
+		//  		{"type":"view","name":"拦截种类","url":"http://210.56.209.61/setting/type"},
+		//  		{"type":"view","name":"拦截号码","url":"http://210.56.209.61/setting/type"},
+		//  		]
+		//  	}
+		//  ]
+		// }
 
-
-		post(url,{"button":[{"name":"拦截种类","sub_button":[{"type":"view",
-               "name":"搜索",
-               "url":"http://210.56.209.61/setting/type"}]}]},(body)=>{
+		post(url,menu,(body)=>{
 			callback(body)
 		}) 
 	})
