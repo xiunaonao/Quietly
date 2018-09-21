@@ -96,7 +96,7 @@ function get(url,callback){
 	request(url,(err,res,body)=>{
 		console.log(body)
 		if (!err && res.statusCode == 200) {
-	        callback(JSON.stringify(body))
+	        callback(JSON.parse(body))
 	    }
 	})
 }
