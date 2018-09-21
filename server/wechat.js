@@ -63,17 +63,17 @@ function set_menu(callback){
 			       	{
 			       		"type":"view",
 			       		"name":"公众号介绍",
-			       		"media_id":"http://210.56.209.61/build"
+			       		"url":"http://210.56.209.61/build"
 			       	},
 			       	{
 			       		"type":"view",
 			       		"name":"行业信息",
-			       		"media_id":"http://210.56.209.61/build"
+			       		"url":"http://210.56.209.61/build"
 			       	},
 			       	{
 			       		"type":"view",
 			       		"name":"相关新闻",
-			       		"media_id":"http://210.56.209.61/build"
+			       		"url":"http://210.56.209.61/build"
 			       	}
 		       	]
 		       }]
