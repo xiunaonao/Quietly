@@ -5,6 +5,10 @@ block content
 		if(localStorage.user){
 			location.href='/';
 		}
+	script.
+		window.onerror=function(e){
+			alert(JSON.stringify(e))
+		}
 	article#register
 
 		h5 举报来电
