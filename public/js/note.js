@@ -93,10 +93,6 @@ var vapp=new Vue({
 		}
 	},
 	mounted:function(){
-		if(!localStorage.note){
-			localStorage.note='[{"tel":"0571-44444444","date":"2018-08-28 12:12:00.0","remark":"推销电话","type":1},'+
-			'{"tel":"13833333333","date":"2018-08-28 12:12:00.0","remark":"推销电话","type":2}]';
-		}
-		this.note_list=JSON.parse(localStorage.note);
+		this.note_list=[];
 	}
 })

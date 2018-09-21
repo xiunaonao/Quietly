@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var crypto = require('crypto')
+let wechat=require(('wechat'))
 
 /* GET home page. */
 router.get(['/index','/'], function(req, res, next) {
@@ -24,6 +25,15 @@ router.get('/wechat',(req,res,next)=>{
 		res.send(echostr)
 	}else{
 		res.send('not wechat')
+	}
+})
+
+
+router.post('/wechat_menu',(req,res,next)=>{
+	if(req.body.pwd=='hm_zxw_eastcom'){
+		res.json(wechat.set_menu())
+	}else{
+		res.json({success:false})
 	}
 })
 
