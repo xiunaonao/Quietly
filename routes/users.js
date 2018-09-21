@@ -3,7 +3,8 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('user_index',{title:'我的信息'})
+	let tel=req.cookie['t']
+	res.render('user_index',{title:'我的信息',{tel:tel}})
 });
 
 router.get('/note',(req,res,next)=>{
