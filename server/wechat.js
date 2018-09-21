@@ -81,7 +81,7 @@ function set_menu(callback){
 		post(url,menu,(body)=>{
 			callback(body)
 		}) 
-	}
+	})
 }
 
 
