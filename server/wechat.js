@@ -61,19 +61,19 @@ function set_menu(callback){
 		       	"name":"信息管理",
 		       	"sub_button":[
 			       	{
-			       		"type":"view_limited",
+			       		"type":"view",
 			       		"name":"公众号介绍",
-			       		"media_id":""
+			       		"media_id":"http://210.56.209.61/build"
 			       	},
 			       	{
-			       		"type":"view_limited",
+			       		"type":"view",
 			       		"name":"行业信息",
-			       		"media_id":""
+			       		"media_id":"http://210.56.209.61/build"
 			       	},
 			       	{
-			       		"type":"view_limited",
+			       		"type":"view",
 			       		"name":"相关新闻",
-			       		"media_id":""
+			       		"media_id":"http://210.56.209.61/build"
 			       	}
 		       	]
 		       }]
