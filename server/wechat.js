@@ -80,7 +80,7 @@ function set_menu(callback){
 		 }
 
 
-		post(url,{"button":[{"name":"接听意愿","sub_button":[]]}},(body)=>{
+		post(url,{"button":[{"name":"接听意愿","sub_button":[]}]},(body)=>{
 			callback(body)
 		}) 
 	})
