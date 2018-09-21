@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var crypto = require('crypto')
-let wechat=require(('wechat'))
+let wechat=require(('../server/wechat'))
 
 /* GET home page. */
 router.get(['/index','/'], function(req, res, next) {
