@@ -13,6 +13,10 @@ router.get('/register',(req,res,next)=>{
 	res.render('register',{title:'用户绑定',url:req.query.url})
 })
 
+router.get('/build',(req,res,next)=>{
+	res.render('build',{})
+})
+
 
 router.get('/wechat',(req,res,next)=>{
 	var token="eastcom_hm";

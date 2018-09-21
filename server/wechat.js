@@ -61,19 +61,19 @@ function set_menu(callback){
 		       	"name":"信息管理",
 		       	"sub_button":[
 			       	{
-			       		"type":"view",
+			       		"type":"view_limited",
 			       		"name":"公众号介绍",
-			       		"url":""
+			       		"media_id":""
 			       	},
 			       	{
-			       		"type":"view",
+			       		"type":"view_limited",
 			       		"name":"行业信息",
-			       		"url":""
+			       		"media_id":""
 			       	},
 			       	{
-			       		"type":"view",
+			       		"type":"view_limited",
 			       		"name":"相关新闻",
-			       		"url":""
+			       		"media_id":""
 			       	}
 		       	]
 		       }]
