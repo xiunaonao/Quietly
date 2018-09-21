@@ -32,7 +32,9 @@ router.get('/wechat',(req,res,next)=>{
 router.post('/wechat_menu',(req,res,next)=>{
 	console.log(req.body.pwd)
 	if(req.body.pwd=='hm_zxw_eastcom'){
-		res.json(wechat.set_menu())
+		wechat.set_menu((body)=>{
+			res.json(body)
+		})
 	}else{
 		res.json({success:false})
 	}

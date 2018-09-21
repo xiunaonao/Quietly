@@ -11,6 +11,8 @@ function get_token(callback){
 		if(body.errcode){
 
 		}else{
+			console.log(typeof body)
+			console.log(body.access_token)
 			callback(body.access_token)
 		}
 	})
