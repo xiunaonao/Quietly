@@ -31,12 +31,12 @@ function set_menu(callback){
 		           	{    
 		               "type":"view",
 		               "name":"拦截种类",
-		               "url":"http://210.56.209.61/setting/type"
+		               "url":"http://fsr.calltrace.cn/setting/type"
 		            },
 		            {
 		               "type":"view",
 		               "name":"拦截号码",
-		               "url":"http://210.56.209.61/setting/rosterlist"
+		               "url":"http://fsr.calltrace.cn/setting/rosterlist"
 		            }]
 		       },{
 		       		"name":"个人管理",
@@ -44,17 +44,17 @@ function set_menu(callback){
 			       		{
 			       			"type":"view",
 			       			"name":"我的",
-			       			"url":"http://210.56.209.61/users/"	
+			       			"url":"http://fsr.calltrace.cn/users/"	
 			       		},
 			       		{
 			       			"type":"view",
 			       			"name":"号码标记",
-			       			"url":"http://210.56.209.61/report/"	
+			       			"url":"http://fsr.calltrace.cn/report/"	
 			       		},
 			       		{
 			       			"type":"view",
 			       			"name":"拦截记录",
-			       			"url":"http://210.56.209.61/users/note"	
+			       			"url":"http://fsr.calltrace.cn/users/note"	
 			       		}
 		       		]
 		       },{
@@ -63,17 +63,17 @@ function set_menu(callback){
 			       	{
 			       		"type":"view",
 			       		"name":"公众号介绍",
-			       		"url":"http://210.56.209.61/build"
+			       		"url":"http://fsr.calltrace.cn/build"
 			       	},
 			       	{
 			       		"type":"view",
 			       		"name":"行业信息",
-			       		"url":"http://210.56.209.61/build"
+			       		"url":"http://fsr.calltrace.cn/build"
 			       	},
 			       	{
 			       		"type":"view",
 			       		"name":"相关新闻",
-			       		"url":"http://210.56.209.61/build"
+			       		"url":"http://fsr.calltrace.cn/build"
 			       	}
 		       	]
 		       }]
