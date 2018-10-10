@@ -2,7 +2,11 @@ extends layout
 
 block content
 	article#type(v-cloak)
-		h5 请选择要拦截的类型
+		//h5 请选择要拦截的类型
+		#type_header(v-bind:class="[is_open?'':'type_header_close']")
+			.switch
+				aside.btn(@click="change_type_all()",v-bind:class="[is_open?'open':'']")
+					span
 		section
 			//h6(v-if='type_list.length>0 && type_list[0].list.length==1')
 			h6

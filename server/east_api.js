@@ -8,11 +8,11 @@ let login=(tel,pwd,res,callback)=>{
 			let tel_times=new Date(new Date().setDate(new Date().getDate()+30))
 			let api_times=new Date(new Date().setMinutes(new Date().getMinutes()+4))
 			res.cookie('t',tel,{expires:tel_times,httpOnly:true})
-			res.cookie('p',pwd,{expires:tel_times,httpOnly:true})
+			//res.cookie('p',pwd,{expires:tel_times,httpOnly:true})
 			res.cookie('a',1,{expires:api_times,httpOnly:true})
 			callback(true)
         }else{
-          	res.redirect(302,'/register?url='+url)
+          	//res.redirect(302,'/register?url='+url)
           	callback(false)
         }
 

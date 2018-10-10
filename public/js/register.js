@@ -22,10 +22,10 @@ var vapp=new Vue({
 				vapp_layer.alert('请填写手机号码');
 				return;
 			}
-			if(!this.pwd){
-				vapp_layer.alert('请填写密码');
-				return;
-			}
+			// if(!this.pwd){
+			// 	vapp_layer.alert('请填写密码');
+			// 	return;
+			// }
 			var scope=this;
 			axios.post('/api/register',{
 				name:scope.tel,
