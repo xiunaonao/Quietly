@@ -7,7 +7,7 @@ block content
 			.switch
 				aside.btn(@click="change_type_all()",v-bind:class="[is_open?'open':'']")
 					span
-		section
+		section(v-if="is_open")
 			//h6(v-if='type_list.length>0 && type_list[0].list.length==1')
 			h6
 			div

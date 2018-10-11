@@ -1,15 +1,25 @@
 var express = require('express');
 var router = express.Router();
 let request=require('request')
+let auth = require('../server/auth')
 request=request.defaults({jar: true})
 let config=require('../config.json')
 let east_api=require('../server/east_api')
 let codes=`ECKoWMEJqqjCUoqh9VVTowMWNlyyywLBR7HM`
 let typedata=['疑似欺诈','骚扰电话','金融理财','房产中介','广告推销','违法犯罪','教育培训','招聘猎头','响一声来电']
 
+
 router.post('/register',(req,res,next)=>{
 	let name=req.body.name
-	post(config.server+'nahiisp-user/user',{name:name,password:codes},(body)=>{
+	let code=req.body.code
+	let token=req.body.token
+	auth.decrypt(token,'hmAAAeastBBBcomCCCsmscode',(str)=>{
+		if(str!=code)
+		{
+			res.json({success:0,msg:'验证码错误'})
+			return
+		}
+		post(config.server+'nahiisp-user/user',{name:name,password:codes},(body)=>{
 		//res.json(body)
 		if(body.success){
 			east_api.login(name,codes,res,(success)=>{
@@ -23,6 +33,9 @@ router.post('/register',(req,res,next)=>{
 
 		}
 	})
+	})
+
+	
 
 
 })
@@ -185,6 +198,25 @@ router.get('/get_setting_special',(req,res,next)=>{
 			]
 		
 	})
+})
+
+router.post('/send_sms',(req,res,next)=>{
+	let number=req.body.number
+	if(!number.match(/^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/)){
+		res.json({success:0,msg:'手机号码格式不正确'})
+	}
+	let param={
+		number:number
+	}
+	let key='hmAAAeastBBBcomCCCsmscode'
+	auth.encrypt(`88088`,key,(token)=>{
+		res.json({success:1,msg:'发送成功',token:token})
+	})
+	return
+	post(config.server+'/nahiisp-sms/sms',param,(body)=>{
+		res.json(body)
+	})
+
 })
 
 module.exports = router;
