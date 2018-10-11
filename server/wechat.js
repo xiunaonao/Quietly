@@ -21,9 +21,10 @@ function get_token(callback){
 
 function get_web_token(code,callback){
 	let url=`https://api.weixin.qq.com/sns/oauth2/access_token?appid=${appid}&secret=${secret}&code=${code}&grant_type=authorization_code`
+	console.log(url)
 	get(url,(body)=>{
 		console.log(body)
-		if(!body.errcode){
+		if(body.errcode){
 			//callback(body.errcode)
 		}else{
 			get_user(body.openid,(body2)=>{
@@ -39,7 +40,7 @@ function get_user(openid,callback){
 		let url=`https://api.weixin.qq.com/cgi-bin/user/info?access_token=${token}&openid=${openid}&lang=zh_CN`
 		get(url,(body)=>{
 			console.log(body)
-			if(!body.errcode){
+			if(body.errcode){
 
 			}else{
 				callback(body)
