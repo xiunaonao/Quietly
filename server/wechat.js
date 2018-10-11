@@ -19,6 +19,35 @@ function get_token(callback){
 
 }
 
+function get_web_token(code,callback){
+	let url=`https://api.weixin.qq.com/sns/oauth2/access_token?appid=${appid}&secret=${secret}&code=${code}&grant_type=authorization_code`
+	get(url,(body)=>{
+		console.log(body)
+		if(!body.errcode){
+			//callback(body.errcode)
+		}else{
+			get_user(body.openid,(body2)=>{
+				callback(body)
+			})
+			//callback(null,body.openid)
+		}
+	})
+}
+
+function get_user(openid,callback){
+	get_token(token)=>{
+		let url=`https://api.weixin.qq.com/cgi-bin/user/info?access_token=${token}&openid=${openid}&lang=zh_CN`
+		get(url,(body)=>{
+			console.log(body)
+			if(!body.errcode){
+
+			}else{
+				callback(body)
+			}
+		})
+
+	}
+}
 
 function set_menu(callback){
 	get_token((token)=>{
@@ -96,7 +125,8 @@ function set_menu(callback){
 
 
 module.exports={
-	set_menu:set_menu
+	set_menu:set_menu,
+	get_web_token:get_web_token
 }
 
 
