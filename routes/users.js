@@ -38,6 +38,8 @@ router.get('/', function(req, res, next) {
 		wechat.get_web_token(code,(body)=>{
 			let tel_times=new Date(new Date().setDate(new Date().getDate()+30))
 			res.cookie('openid',body.openid,{expires:tel_times,httpOnly:true})
+			console.log(body)
+			console.log(typeof body)
 			res.render('user_index',{title:'我的信息',tel:tel,wechat:body})
 		})
 		
