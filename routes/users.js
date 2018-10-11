@@ -34,15 +34,21 @@ router.get('/', function(req, res, next) {
 			res.redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxed14cc095edc34e0&redirect_uri=http%3a%2f%2ffsr.calltrace.cn%2fusers%2f&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect')
 			return
 		}
-	}else{
+	}else if(!openid){
 		wechat.get_web_token(code,(body)=>{
 			let tel_times=new Date(new Date().setDate(new Date().getDate()+30))
 			res.cookie('openid',body.openid,{expires:tel_times,httpOnly:true})
 			console.log(body)
-			console.log(typeof body)
 			res.render('user_index',{title:'我的信息',tel:tel,wechat:body})
 		})
 		
+	}else{
+		wechat.get_user(openid,(body)=>{
+			let tel_times=new Date(new Date().setDate(new Date().getDate()+30))
+			res.cookie('openid',body.openid,{expires:tel_times,httpOnly:true})
+			console.log(body)
+			res.render('user_index',{title:'我的信息',tel:tel,wechat:body})
+		})
 	}
 	
 });

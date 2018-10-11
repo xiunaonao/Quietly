@@ -28,7 +28,7 @@ function get_web_token(code,callback){
 			//callback(body.errcode)
 		}else{
 			get_user(body.openid,(body2)=>{
-				callback(body)
+				callback(body2)
 			})
 			//callback(null,body.openid)
 		}
@@ -127,7 +127,8 @@ function set_menu(callback){
 
 module.exports={
 	set_menu:set_menu,
-	get_web_token:get_web_token
+	get_web_token:get_web_token,
+	get_user:get_user
 }
 
 
