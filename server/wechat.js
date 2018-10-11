@@ -35,7 +35,7 @@ function get_web_token(code,callback){
 }
 
 function get_user(openid,callback){
-	get_token(token)=>{
+	get_token((token)=>{
 		let url=`https://api.weixin.qq.com/cgi-bin/user/info?access_token=${token}&openid=${openid}&lang=zh_CN`
 		get(url,(body)=>{
 			console.log(body)
@@ -46,7 +46,7 @@ function get_user(openid,callback){
 			}
 		})
 
-	}
+	})
 }
 
 function set_menu(callback){
