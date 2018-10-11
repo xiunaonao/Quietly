@@ -20,19 +20,19 @@ router.post('/register',(req,res,next)=>{
 			return
 		}
 		post(config.server+'nahiisp-user/user',{name:name,password:codes},(body)=>{
-		//res.json(body)
-		if(body.success){
-			east_api.login(name,codes,res,(success)=>{
-				res.json({success:success})
-			})
-		}else if(body.message=='该号码已经注册!'){
-			east_api.login(name,codes,res,(success)=>{
-				res.json({success:success})
-			})
-		}else{
+			//res.json(body)
+			if(body.success){
+				east_api.login(name,codes,res,(success)=>{
+					res.json({success:success})
+				})
+			}else if(body.message=='该号码已经注册!'){
+				east_api.login(name,codes,res,(success)=>{
+					res.json({success:success})
+				})
+			}else{
 
-		}
-	})
+			}
+		})
 	})
 
 	
