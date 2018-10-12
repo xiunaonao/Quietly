@@ -2,8 +2,8 @@ exports.event=(key,openid,mpid,callback)=>{
 	switch(key){
 		case 'about_us':
 			let xml=`<xml>
-			<ToUserName><![CDATA[openid]]></ToUserName>
-			<FromUserName><![CDATA[mpid]]></FromUserName>
+			<ToUserName><![CDATA[${openid}]]></ToUserName>
+			<FromUserName><![CDATA[${mpid}]]></FromUserName>
 			<CreateTime>${parseInt(new Date().valueOf() / 1000)}</CreateTime>
 			<MsgType><![CDATA[news]]></MsgType>
 			<ArticleCount>1</ArticleCount>
