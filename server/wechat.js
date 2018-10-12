@@ -104,14 +104,14 @@ function set_menu(callback){
 			       		"key":"about_us"
 			       	},
 			       	{
-			       		"type":"view",
+			       		"type":"click",
 			       		"name":"行业信息",
-			       		"url":"http://fsr.calltrace.cn/build"
+			       		"url":"hyxx"
 			       	},
 			       	{
-			       		"type":"view",
+			       		"type":"click",
 			       		"name":"相关新闻",
-			       		"url":"http://fsr.calltrace.cn/build"
+			       		"url":"news"
 			       	}
 		       	]
 		       }]
