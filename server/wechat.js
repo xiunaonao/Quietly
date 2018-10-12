@@ -70,7 +70,7 @@ function set_menu(callback){
 		            },
 		            {
 		            	"type":"view",
-		            	"name":"允许通话名单设置",
+		            	"name":"允许通话名单",
 		            	"url":"http://fsr.calltrace.cn/setting/roster?type=1"
 		            }
 		            ]
