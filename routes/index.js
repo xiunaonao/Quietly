@@ -41,10 +41,32 @@ router.post('/wechat',(req,res,next)=>{
 	var nonce     = req.query.nonce
 	let openid    = req.query.openid
 	var currSign,tmp
-	tmp = [token,timestamp,nonce].sort().join("")
-	currSign = crypto.createHash("sha1").update(tmp).digest("hex")
-	console.log(currSign)
+
 	console.log(req.body)
+
+	let data=req.body.xml
+
+	let xml=`<xml> 
+		<ToUserName>< ![CDATA[全国防骚扰信息综合服务] ]></ToUserName> 
+		<FromUserName>< ![CDATA[${openid}] ]></FromUserName> 
+		<CreateTime>${new Date().getTime()}</CreateTime> 
+		<MsgType>< ![CDATA[text] ]></MsgType> 
+		<Content>< ![CDATA[你好] ]></Content> 
+		</xml>`
+
+	res.end(xml)
+	/*
+		{ xml:
+		   { tousername: 'gh_c8c44227795f',
+		     fromusername: 'oy84s1FY0bf1k0gk2bEBbWuAbpqM',
+		     createtime: '1539339458',
+		     msgtype: 'text',
+		     content: '哈哈',
+		     msgid: '6611412630001725687' 
+		    } 
+		}
+	*/
+
 })
 
 
