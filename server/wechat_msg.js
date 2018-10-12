@@ -1,7 +1,8 @@
 exports.event=(key,openid,mpid,callback)=>{
+	let xml=''
 	switch(key){
 		case 'about_us':
-			let xml=`<xml>
+			xml=`<xml>
 			<ToUserName><![CDATA[${openid}]]></ToUserName>
 			<FromUserName><![CDATA[${mpid}]]></FromUserName>
 			<CreateTime>${parseInt(new Date().valueOf() / 1000)}</CreateTime>
@@ -17,7 +18,7 @@ exports.event=(key,openid,mpid,callback)=>{
 			callback(xml)
 			break
 		case 'hyxx':
-			let xml=`<xml>
+			xml=`<xml>
 			<ToUserName><![CDATA[${openid}]]></ToUserName>
 			<FromUserName><![CDATA[${mpid}]]></FromUserName>
 			<CreateTime>${parseInt(new Date().valueOf() / 1000)}</CreateTime>
@@ -33,7 +34,7 @@ exports.event=(key,openid,mpid,callback)=>{
 			callback(xml)
 			break
 		case 'news':
-			let xml=`<xml>
+			xml=`<xml>
 			<ToUserName><![CDATA[${openid}]]></ToUserName>
 			<FromUserName><![CDATA[${mpid}]]></FromUserName>
 			<CreateTime>${parseInt(new Date().valueOf() / 1000)}</CreateTime>
