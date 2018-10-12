@@ -24,12 +24,21 @@ router.get('/wechat',(req,res,next)=>{
 	var timestamp = req.query.timestamp;
 	var echostr   = req.query.echostr;
 	var nonce     = req.query.nonce;
-
 	if(check(timestamp,nonce,signature,token)){
 		res.send(echostr)
 	}else{
 		res.send('not wechat')
 	}
+})
+
+router.post('/wechat',(req,res,next)=>{
+	//wechat?signature=0c1855ca935b45bcf5f07035f31d8a8ff8f7f086&timestamp=1539338118&nonce=1469025155&openid=oy84s1FY0bf1k0gk2bEBbWuAbpqM
+	var token="eastcom_hm";
+	var signature = req.query.signature;
+	var timestamp = req.query.timestamp;
+	var echostr   = req.query.echostr;
+	var nonce     = req.query.nonce;
+	console.log(req.body)
 })
 
 
