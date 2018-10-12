@@ -32,12 +32,18 @@ router.get('/wechat',(req,res,next)=>{
 })
 
 router.post('/wechat',(req,res,next)=>{
+	res.writeHead(200, {'Content-Type': 'application/xml'});
 	//wechat?signature=0c1855ca935b45bcf5f07035f31d8a8ff8f7f086&timestamp=1539338118&nonce=1469025155&openid=oy84s1FY0bf1k0gk2bEBbWuAbpqM
 	var token="eastcom_hm";
-	var signature = req.query.signature;
-	var timestamp = req.query.timestamp;
-	var echostr   = req.query.echostr;
-	var nonce     = req.query.nonce;
+	var signature = req.query.signature
+	var timestamp = req.query.timestamp
+	var echostr   = req.query.echostr
+	var nonce     = req.query.nonce
+	let openid    = req.query.openid
+	var currSign,tmp
+	tmp = [token,timestamp,nonce].sort().join("")
+	currSign = crypto.createHash("sha1").update(tmp).digest("hex")
+	console.log(currSign)
 	console.log(req.body)
 })
 
