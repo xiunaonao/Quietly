@@ -66,6 +66,7 @@ router.post('/wechat',(req,res,next)=>{
 		return
 	}else if(data.msgtype=='event'){
 		wechat_msg.event(data.eventkey,openid,data.tousername,(xml)=>{
+			console.log(xml)
 			res.end(xml)
 		})
 	}
