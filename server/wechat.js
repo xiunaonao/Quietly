@@ -99,9 +99,9 @@ function set_menu(callback){
 		       	"name":"关于我们",
 		       	"sub_button":[
 			       	{
-			       		"type":"view",
+			       		"type":"click",
 			       		"name":"公众号介绍",
-			       		"url":"http://fsr.calltrace.cn/build"
+			       		"key":"about_us"
 			       	},
 			       	{
 			       		"type":"view",
