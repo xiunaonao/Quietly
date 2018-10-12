@@ -106,12 +106,12 @@ function set_menu(callback){
 			       	{
 			       		"type":"click",
 			       		"name":"行业信息",
-			       		"url":"hyxx"
+			       		"key":"hyxx"
 			       	},
 			       	{
 			       		"type":"click",
 			       		"name":"相关新闻",
-			       		"url":"news"
+			       		"key":"news"
 			       	}
 		       	]
 		       }]
