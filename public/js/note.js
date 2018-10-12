@@ -2,6 +2,8 @@ var vapp=new Vue({
 	el:'#note',
 	data:{
 		is_add:false,
+		is_notice:false,
+		noticeid:'',
 		note_list:[],
 		add_obj:{
 			type:1,
@@ -37,6 +39,44 @@ var vapp=new Vue({
 			this.add_obj.remark=obj.remark;
 			this.is_add=true;
 
+		},
+		select_notice:function(){
+			var scope=this
+			axios.get('/api/get_notice').then(function(res){
+				if(res.data.success){
+					if(res.data.result.result){
+						scope.noticeid=res.data.result.result.id
+						scope.is_notice=true
+					}else{
+						scope.is_notice=false
+					}
+				}
+				scope.get_note()
+			})
+		},
+		open_notice:function(){
+			var scope=this
+			this.is_notice=!this.is_notice
+			var id=''
+			if(this.noticeid && !this.is_notice)
+				id=this.noticeid
+
+			axios.post('/api/set_notice?id='+id).then(function(res){
+				if(res.data.success){
+					if(res.data.result.result){
+						scope.noticeid=res.data.result.result
+					}
+				}
+			})
+		},
+		get_note:function(){
+			var url='/api/note_list'
+			var scope=this
+			axios.get(url).then(function(res){
+				if(res.data.success)
+					this.note_list=res.data.result.result
+
+			})
 		},
 		add_roster:function(){
 			var scope=this;
@@ -93,6 +133,8 @@ var vapp=new Vue({
 		}
 	},
 	mounted:function(){
-		this.note_list=[];
+		//this.note_list=[];
+		
+		this.select_notice()
 	}
 })

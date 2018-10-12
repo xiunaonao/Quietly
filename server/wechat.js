@@ -69,26 +69,28 @@ function set_menu(callback){
 		               "url":"http://fsr.calltrace.cn/setting/rosterlist"
 		            }]
 		       },{
-		       		"name":"个人管理",
-		       		"sub_button":[
-			       		{
-			       			"type":"view",
-			       			"name":"我的",
-			       			"url":"http://fsr.calltrace.cn/users/"	
-			       		},
-			       		{
-			       			"type":"view",
-			       			"name":"号码标记",
-			       			"url":"http://fsr.calltrace.cn/report/"	
-			       		},
-			       		{
-			       			"type":"view",
-			       			"name":"拦截记录",
-			       			"url":"http://fsr.calltrace.cn/users/note"	
-			       		}
-		       		]
+		       		"name":"个人中心",
+		       		"type":"view",
+		       		"url":"http://fsr.calltrace.cn/users/"
+		       		// "sub_button":[
+			       	// 	{
+			       	// 		"type":"view",
+			       	// 		"name":"我的",
+			       	// 		"url":"http://fsr.calltrace.cn/users/"	
+			       	// 	},
+			       	// 	{
+			       	// 		"type":"view",
+			       	// 		"name":"号码标记",
+			       	// 		"url":"http://fsr.calltrace.cn/report/"	
+			       	// 	},
+			       	// 	{
+			       	// 		"type":"view",
+			       	// 		"name":"拦截记录",
+			       	// 		"url":"http://fsr.calltrace.cn/users/note"	
+			       	// 	}
+		       		// ]
 		       },{
-		       	"name":"信息管理",
+		       	"name":"关于我们",
 		       	"sub_button":[
 			       	{
 			       		"type":"view",

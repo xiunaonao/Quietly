@@ -1,30 +1,22 @@
 extends layout
 
 block content
-	article#note(v-cloak)
-		h5 已为您拦截{{note_list.length}}次电话
-			//a
+	article#list(v-cloak)
+		h5 您已举报{{list.length}}次号码
+			a(href='') 我要举报
 		div.table
 			ul.roster-list
-				li(v-for="obj in note_list")
+				li(v-for="obj in list")
 					h4
-						label {{obj.tel}}
-						span {{obj.date.substring(0,obj.date.indexOf('.'))}}
+						label {{obj.number}}
+						span {{obj.createTime}}
 					h3
-						label{{obj.remark}}
-						a.iconfont.btn(@click="move_roster(obj)") 
-							span 添加到白名单
-						a.iconfont.btn(v-bind:href="'tel:'+obj.tel")
-							span 回拨
+						label{{obj.description}}
+						//a.iconfont.btn(href="javascript:;")
+							span 审核中
 
-		section
-			ul
-				li.border-top.btn
-					p
-						label 拦截后通知
-						aside.btn(@click='open_notice',v-bind:class="[is_notice?'open':'']")
-								span
-		.alert-layer(v-if='is_add')
+
+		.alert-layer(v-if='false')
 			.alert-add.l-alert
 				.close-btn(@click="is_add=false") ×
 				h4 添加到白名单
@@ -53,4 +45,4 @@ block content
 						label 备注
 						input.xxl-txt(placeholder="请输入备注内容,如电话销售",type='text',v-model='add_obj.remark')
 				button(@click='add_roster()') 确定添加
-	script(src='/js/note.js?v=#{_v}')
+	script(src='/js/report_list.js?v=#{_v}')

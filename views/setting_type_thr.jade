@@ -1,0 +1,34 @@
+extends layout
+
+block content
+	article#type_thr(v-cloak,v-on:touchend="touchend('move',$event)")
+		//h5 请选择要拦截的类型
+		#type_thr_header
+				p 阈值设置：
+				p · 阈值设置完成后，将根据您设置的数值进行拦截
+				p · 数值为号码被标记的次数，低于此数值不被拦截
+		section
+			//h6(v-if='type_list.length>0 && type_list[0].list.length==1')
+			h6
+			div
+				ul
+					li(v-for="obj in type_list")
+						p
+							label {{obj.name}}
+						input.slider-input(type="text",v-model='obj.value')
+						.slider(v-on:touchmove="touchmove('move',$event,obj)")
+							i
+							i
+							a(v-on:touchstart="touchstart('move',$event,obj)",v-bind:style="{'left':obj.value*0.01+'rem'}")
+				//h4.btn(v-if="obj.list.length>1",@click="open_or_close(obj)") {{obj.name}}
+				//	i.iconfont {{obj.isopen?'&#xe600':'&#xe601'}}
+
+				//ul(v-if="obj.isWished")
+					li(v-for="obj2 in obj.list")
+						p
+							label {{obj2.name}}
+							aside.btn(@click="change_type(obj)",v-bind:class="[obj2.isopen?'open':'']")
+								span
+
+	script(src="/js/type_thr.js?v=#{_v}")
+

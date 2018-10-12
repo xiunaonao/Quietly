@@ -14,6 +14,7 @@ router.post('/register',(req,res,next)=>{
 	let code=req.body.code
 	let token=req.body.token
 	auth.decrypt(token,'hmAAAeastBBBcomCCCsmscode',(str)=>{
+		console.log(str+' == '+code)
 		if(str!=code)
 		{
 			res.json({success:0,msg:'验证码错误'})
@@ -27,7 +28,10 @@ router.post('/register',(req,res,next)=>{
 				})
 			}else if(body.message=='该号码已经注册!'){
 				east_api.login(name,codes,res,(success)=>{
-					res.json({success:success})
+					if(success)
+						res.json({success:success})
+					else
+						res.json({success:false,msg:'登录失败'})
 				})
 			}else{
 
@@ -40,6 +44,9 @@ router.post('/register',(req,res,next)=>{
 
 })
 
+router.get('/get_base_type',(req,res,next)=>{
+	res.json({success:1,result:typedata})
+})
 
 router.get('/get_setting_type',(req,res,next)=>{
 	let isWished=req.query.isWished
@@ -117,7 +124,7 @@ router.post('/set_setting_type_all',(req,res,next)=>{
 				"type":2,
 				"content":strs[i],
 				"wantPushNotification":1,
-				"tagCount":1
+				"tagCount":10
 			})
 		}
 
@@ -170,6 +177,37 @@ router.post('/report',(req,res,next)=>{
 	})
 })
 
+router.get('/note_list',(req,res,next)=>{
+	loginValid(req,res,()=>{
+		get(config.server+'/intercept-notice/userIterceptNotice',(body)=>{
+			res.json(body)
+		})
+	})
+
+})
+
+router.post('/set_notice',(req,res,next)=>{
+	loginValid(req,res,()=>{
+		if(req.query.id){
+			del(config.server+'/nahiisp-notice/'+req.query.id,(body)=>{
+				res.json(body)
+			})
+		}else{
+			post(config.server+'/nahiisp-notice/notice',{},(body)=>{
+				res.json(body)
+			})
+		}
+	})
+})
+
+router.get('/get_notice',(req,res,next)=>{
+	loginValid(req,res,()=>{
+		get(config.server+'/nahiisp-notice/notice',(body)=>{
+			res.json(body)
+		})
+	})
+})
+
 router.get('/get_setting_special',(req,res,next)=>{
 	res.json({
 		success:true,
@@ -209,12 +247,21 @@ router.post('/send_sms',(req,res,next)=>{
 		number:number
 	}
 	let key='hmAAAeastBBBcomCCCsmscode'
-	auth.encrypt(`88088`,key,(token)=>{
-		res.json({success:1,msg:'发送成功',token:token})
-	})
-	return
+	
 	post(config.server+'/nahiisp-sms/sms',param,(body)=>{
-		res.json(body)
+		console.log(body.result.result)
+		console.log(body.success)
+		if(body.success){
+			let smscode=body.result.result
+			console.log(smscode)
+			auth.encrypt(smscode,key,(token)=>{
+				res.json({success:1,msg:'发送成功',token:token})
+			})
+		}else{
+			auth.encrypt(`88088`,key,(token)=>{
+				res.json({success:1,msg:'发送成功',token:token})
+			})
+		}
 	})
 
 })
