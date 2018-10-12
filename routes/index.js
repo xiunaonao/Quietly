@@ -49,11 +49,11 @@ router.post('/wechat',(req,res,next)=>{
 	let xml=`<xml> 
 		<ToUserName>< ![CDATA[${data.tousername}] ]></ToUserName> 
 		<FromUserName>< ![CDATA[${openid}] ]></FromUserName> 
-		<CreateTime>${new Date().getTime()}</CreateTime> 
+		<CreateTime>${parseInt(new Date().valueOf() / 1000)}</CreateTime> 
 		<MsgType>< ![CDATA[text] ]></MsgType> 
 		<Content>< ![CDATA[你好] ]></Content> 
 		</xml>`
-
+		console.log(xml)
 	res.end(xml)
 	/*
 		{ xml:
