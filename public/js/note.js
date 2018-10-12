@@ -79,57 +79,50 @@ var vapp=new Vue({
 			})
 		},
 		add_roster:function(){
-			var scope=this;
-			var obj={
-				type:1,
-				tel_type:this.add_obj.type,
-				remark:this.add_obj.remark,
-				date:new Date().toISOString().replace('T',' ').replace('Z','')
+			var scope=this
+
+			var form={
+					isWished:roster_type==1?1:0,
+					type:roster_type==1?5:1,
+					content:'',
+					wantPushNotification:roster_type==1?0:1
 			}
-			switch(obj.tel_type){
+
+			switch(this.add_obj.type){
 				case 1:
-					obj.tel=this.add_obj.tel1+'-'+this.add_obj.tel2;
+					form.content=this.add_obj.tel1+'-'+this.add_obj.tel2;
 					break;
 				case 2:
-					obj.tel=this.add_obj.tel3;
+					form.content=this.add_obj.tel3;
 					break;
 				case 3:
-					obj.tel=this.add_obj.tel4;
+					form.content=this.add_obj.tel4;
 					break;
 			}
-			
-			var roster_data={}
-			if(!localStorage.roster)
-			{
-				localStorage.roster='{"1":"","-1":""}';
-			}
-			roster_data=JSON.parse(localStorage.roster);
-			if(!roster_data["1"]){
-				roster_data["1"]=[];
-			}
-			roster_data["1"].push(obj);
-			console.log(roster_data);
-			localStorage.roster=JSON.stringify(roster_data);
 
-			this.add_obj={
-				type:1,
-				tel1:'',
-				tel2:'',
-				tel3:'',
-				tel4:'',
-				remark:''
+			if(!this.valid(form.content)){
+				vapp_layer.alert('电话号码不正确')
+				return
 			}
-			this.is_add=false;
-			vapp_layer.alert("已添加到白名单");
-			for(var i=0;i<scope.note_list.length;i++){
-				if(scope.note_list[i].tel==obj.tel){
-					scope.note_list.splice(i,1);
-					break;
+
+			axios.post('/api/set_setting_type',{form:[form]}).then(function(res){
+				scope.roster_list.unshift({
+					content:form.content,
+					id:res.data.result.result,
+					createTime:scope.getDateStr(new Date)
+				});
+
+				scope.add_obj={
+					type:1,
+					tel1:'',
+					tel2:'',
+					tel3:'',
+					tel4:'',
+					remark:''
 				}
-			}
-			var note_data=JSON.parse(localStorage.note);
-			note_data=scope.note_list;
-			localStorage.note=JSON.stringify(note_data);
+				scope.is_add=false;
+				vapp_layer.alert('已加入'+(roster_type==1?'白名单':'黑名单'))
+			})
 		}
 	},
 	mounted:function(){

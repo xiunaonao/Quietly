@@ -51,7 +51,7 @@ var vapp=new Vue({
 			this.touch_obj.start_x=now_x
 		},
 		touchend:function(str,event){
-			if(ths.istouch){
+			if(this.istouch){
 				this.istouch=false
 				this.touch_obj={}
 				localStorage.thr=JSON.stringify(this.type_list)

@@ -48,7 +48,13 @@ var vapp=new Vue({
 					form.content=this.add_obj.tel4;
 					break;
 			}
-			axios.post('/api/set_setting_type',form).then(function(res){
+
+			if(!this.valid(form.content)){
+				vapp_layer.alert('电话号码不正确')
+				return
+			}
+
+			axios.post('/api/set_setting_type',{form:[form]}).then(function(res){
 				scope.roster_list.unshift({
 					content:form.content,
 					id:res.data.result.result,
@@ -101,6 +107,24 @@ var vapp=new Vue({
 			d+=(new Date().getSeconds()+1)
 			return d;
 			
+		},
+		valid:function(tel){
+			let isok=false
+			let err=''
+
+			if(tel.match(/^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/)){
+				isok=true
+			}else{
+			}
+
+			if(tel.match(/^0\d{2,3}-\d{7,8}$/)){
+				isok=true
+			}else{
+
+			}
+
+			return isok
+
 		}
 
 

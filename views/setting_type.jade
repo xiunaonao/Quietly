@@ -7,7 +7,7 @@ block content
 			.switch
 				label 防骚扰拦截{{is_open?'已':'未'}}开启
 				aside.btn(@click="change_type_all()",v-bind:class="[is_open?'open':'']")
-					label {{is_open?'on':'off'}}
+					label on&nbsp;&nbsp;&nbsp;off
 					span
 		section(v-if="is_open")
 			//h6(v-if='type_list.length>0 && type_list[0].list.length==1')

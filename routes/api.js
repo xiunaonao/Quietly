@@ -289,17 +289,23 @@ function loginValid(req,res,callback){
 function del(url,callback){
 	console.log(url)
 	request.del({url:url},(err,res,body)=>{
-		callback(JSON.parse(body))
+		if (!err && res.statusCode == 200) {
+	        callback(JSON.parse(body))
+	    }else{
+			callback({success:0})
+		}
+
 	})
 }
 
 
 function get(url,callback){
 	request(url,(err,res,body)=>{
-		console.log(body)
-		if (!err && res.statusCode == 200) {
-	        callback(JSON.parse(body))
-	    }
+			if (!err && res.statusCode == 200) {
+		        callback(JSON.parse(body))
+		    }else{
+		    	callback({success:0})
+		    }
 	})
 }
 
@@ -323,6 +329,8 @@ function post(url,req,callback,data_type){
 		console.log(body)
 	    if (!err && res.statusCode == 200) {
 	        callback(body)
+	    }else{
+	    	callback({success:0})
 	    }
 	});
 
