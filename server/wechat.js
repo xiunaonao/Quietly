@@ -65,9 +65,15 @@ function set_menu(callback){
 		            },
 		            {
 		               "type":"view",
-		               "name":"拦截号码",
-		               "url":"http://fsr.calltrace.cn/setting/rosterlist"
-		            }]
+		               "name":"黑名单设置",
+		               "url":"http://fsr.calltrace.cn/setting/roster?type=-1"
+		            },
+		            {
+		            	"type":"view",
+		            	"name":"允许通话名单设置",
+		            	"url":"http://fsr.calltrace.cn/setting/roster?type=1"
+		            }
+		            ]
 		       },{
 		       		"name":"个人中心",
 		       		"type":"view",
