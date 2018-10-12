@@ -47,7 +47,7 @@ router.post('/wechat',(req,res,next)=>{
 	let data=req.body.xml
 
 	let xml=`<xml> 
-		<ToUserName>< ![CDATA[全国防骚扰信息综合服务] ]></ToUserName> 
+		<ToUserName>< ![CDATA[${data.tousername}] ]></ToUserName> 
 		<FromUserName>< ![CDATA[${openid}] ]></FromUserName> 
 		<CreateTime>${new Date().getTime()}</CreateTime> 
 		<MsgType>< ![CDATA[text] ]></MsgType> 
