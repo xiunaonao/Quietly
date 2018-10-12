@@ -47,5 +47,6 @@ exports.event=(key,openid,mpid,callback)=>{
 
 			`
 			callback(xml)
+			break
 	}
 }
