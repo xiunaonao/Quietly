@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var crypto = require('crypto')
 let wechat=require(('../server/wechat'))
+let wechat_msg=require('../server/wechat_msg')
 
 /* GET home page. */
 router.get(['/index','/'], function(req, res, next) {
@@ -43,12 +44,6 @@ router.post('/wechat',(req,res,next)=>{
 	var currSign,tmp
 
 	console.log(req.body)
-
-	let data=req.body.xml
-
-	let xml=`<xml><ToUserName><![CDATA[${openid}]]></ToUserName><FromUserName><![CDATA[${data.tousername}]]></FromUserName><CreateTime>${parseInt(new Date().valueOf() / 1000)}</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[你好]]></Content></xml>`
-	console.log(xml)
-	res.end(xml)
 	/*
 		{ xml:
 		   { tousername: 'gh_c8c44227795f',
@@ -61,7 +56,24 @@ router.post('/wechat',(req,res,next)=>{
 		}
 	*/
 
+
+	let data=req.body.xml
+
+	if(data.msgtype=='text'){
+		let xml=`<xml><ToUserName><![CDATA[${openid}]]></ToUserName><FromUserName><![CDATA[${data.tousername}]]></FromUserName><CreateTime>${parseInt(new Date().valueOf() / 1000)}</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[你好]]></Content></xml>`
+		console.log(xml)
+		res.end(xml)
+		return
+	}else if(data.msgtype=='event'){
+		wechat_msg.event(data.eventkey,openid,data.tousername,(xml)=>{
+			res.end(xml)
+		})
+	}
+
+
 })
+
+
 
 
 router.post('/wechat_menu',(req,res,next)=>{
