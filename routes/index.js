@@ -46,7 +46,7 @@ router.post('/wechat',(req,res,next)=>{
 
 	let data=req.body.xml
 
-	let xml=`<xml><ToUserName><![CDATA[${data.tousername}]]></ToUserName><FromUserName><![CDATA[${openid}]]></FromUserName><CreateTime>${parseInt(new Date().valueOf() / 1000)}</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[你好]]></Content></xml>`
+	let xml=`<xml><ToUserName><![CDATA[${openid}]]></ToUserName><FromUserName><![CDATA[${data.tousername}]]></FromUserName><CreateTime>${parseInt(new Date().valueOf() / 1000)}</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[你好]]></Content></xml>`
 	console.log(xml)
 	res.end(xml)
 	/*
