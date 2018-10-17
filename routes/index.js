@@ -75,6 +75,7 @@ router.post('/wechat',(req,res,next)=>{
 })
 
 router.post('/test_notice',(req,res,next)=>{
+	console.log(req.body)
 	if(req.body.pwd=="hm_zxw_eastcom"){
 		wechat.send_notice({
 			number:'13221040450',
@@ -84,6 +85,8 @@ router.post('/test_notice',(req,res,next)=>{
 		},(body)=>{
 			res.json(body)
 		})
+	}else{
+		res.json({success:false})
 	}
 })
 
