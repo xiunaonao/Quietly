@@ -83,7 +83,7 @@ router.post('/test_notice',(req,res,next)=>{
 			url:'http://fsr.calltrace.cn/users/note'
 		},(body)=>{
 			res.json(body)
-		}
+		})
 	}
 })
 
