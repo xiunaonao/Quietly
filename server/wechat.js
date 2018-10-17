@@ -133,10 +133,44 @@ function set_menu(callback){
 }
 
 
+function notice(data,callback){
+	let openid='oy84s1FY0bf1k0gk2bEBbWuAbpqM'
+	get_token((token)=>{
+		let url=`https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=${token}`
+		let date=new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()+' '+new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()
+		let obj={
+			"touser":openid,
+			"template_id":"gkyuaUsstSmTqXuhF18NfN-4PI9mxqXpPPvjXDpq3QI",
+			"url":data.url,
+			"topcolor":"#FF0000",
+			"data":{
+				first:{value:'骚扰电话拦截',color:'#333'},
+				keyword1:{value:date,color:'#333'},
+				keyword2:{value:data.number,color:'#E30'},
+				keyword3:{value:data.content,color:'#333'},
+				remark:{value:data.remark,color:'#333'}
+			}
+		}
+		post(url,obj,(body)=>{
+			callback(body)
+		})
+	})
+
+	/*
+		{{first.DATA}}
+		来电日期：{{keyword1.DATA}}
+		来电号码：{{keyword2.DATA}}
+		拦截原因：{{keyword3.DATA}}
+		{{remark.DATA}}
+	*/
+
+}
+
 module.exports={
 	set_menu:set_menu,
 	get_web_token:get_web_token,
-	get_user:get_user
+	get_user:get_user,
+	send_notice:notice
 }
 
 

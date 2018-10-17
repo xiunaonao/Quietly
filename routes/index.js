@@ -74,7 +74,18 @@ router.post('/wechat',(req,res,next)=>{
 
 })
 
-
+router.post('/test_notice',(req,res,next)=>{
+	if(req.body.pwd=="hm_zxw_eastcom"){
+		wechat.send_notice({
+			number:'13221040450',
+			content:'房产推销',
+			remark:'点击查看详情',
+			url:'http://fsr.calltrace.cn/users/note'
+		},(body)=>{
+			res.json(body)
+		}
+	}
+})
 
 
 router.post('/wechat_menu',(req,res,next)=>{

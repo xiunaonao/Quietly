@@ -44,6 +44,8 @@ router.post('/register',(req,res,next)=>{
 
 })
 
+
+
 router.get('/get_base_type',(req,res,next)=>{
 	res.json({success:1,result:typedata})
 })
