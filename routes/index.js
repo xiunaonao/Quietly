@@ -14,7 +14,7 @@ router.get('/register',(req,res,next)=>{
 
 	let wechat_code=req.query.code
 
-	
+
 
 
 	if(!wechat_code){
@@ -27,7 +27,7 @@ router.get('/register',(req,res,next)=>{
 			let tel_times=new Date(new Date().setDate(new Date().getDate()+30))
 			res.cookie('openid',body.openid,{expires:tel_times,httpOnly:true})
 			console.log(body)
-			res.render('user_index',{title:'用户绑定',url:req.query.url})
+			res.render('register',{title:'用户绑定',url:req.query.url})
 		})
 		//res.render('register',{title:'用户绑定',url:req.query.url})
 	}
