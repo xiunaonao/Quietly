@@ -11,7 +11,26 @@ router.get(['/index','/'], function(req, res, next) {
 
 router.get('/register',(req,res,next)=>{
 	
-	res.render('register',{title:'用户绑定',url:req.query.url})
+
+	let wechat_code=req.query.code
+
+	
+
+
+	if(!wechat_code){
+		let url=encodeURIComponent('http://fsr.calltrace.cn/register?url='+req.query.url)
+		//http%3a%2f%2ffsr.calltrace.cn%2fusers%2f
+		res.redirect(`https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxed14cc095edc34e0&redirect_uri=${url}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect`)
+		return
+	}else{
+		wechat.get_web_token(wechat_code,(body)=>{
+			let tel_times=new Date(new Date().setDate(new Date().getDate()+30))
+			res.cookie('openid',body.openid,{expires:tel_times,httpOnly:true})
+			console.log(body)
+			res.render('user_index',{title:'用户绑定',url:req.query.url})
+		})
+		//res.render('register',{title:'用户绑定',url:req.query.url})
+	}
 })
 
 router.get('/build',(req,res,next)=>{

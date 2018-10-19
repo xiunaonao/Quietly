@@ -13,6 +13,8 @@ router.post('/register',(req,res,next)=>{
 	let name=req.body.name
 	let code=req.body.code
 	let token=req.body.token
+	let openid=req.cookies['openid']
+
 	auth.decrypt(token,'hmAAAeastBBBcomCCCsmscode',(str)=>{
 		console.log(str+' == '+code)
 		if(str!=code)
@@ -20,6 +22,8 @@ router.post('/register',(req,res,next)=>{
 			res.json({success:0,msg:'验证码错误'})
 			return
 		}
+		let openid=``
+		let time=new Date().getTime()
 		post(config.server+'nahiisp-user/user',{name:name,password:codes},(body)=>{
 			//res.json(body)
 			if(body.success){
@@ -103,7 +107,7 @@ router.post('/set_setting_type',(req,res,next)=>{
 		})
 	}
 	loginValid(req,res,()=>{
-		post(config.server+'nahiisp-wish/wish',param,(body)=>{
+		post(config.server+'nahiisp-wish/wish',{time:new Date().getTime(),wishs:param},(body)=>{
 			res.json(body)
 		})
 	})
@@ -152,7 +156,7 @@ router.post('/del_setting_type',(req,res,next)=>{
 	let id=req.query.id
 	
 	loginValid(req,res,()=>{
-		del(config.server+`nahiisp-wish/wish/${id}`,(body)=>{
+		del(config.server+`nahiisp-wish/wish/${id}/${new Date().getTime()}`,(body)=>{
 			res.json(body)
 		})
 	})
