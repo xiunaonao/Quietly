@@ -22,9 +22,8 @@ router.post('/register',(req,res,next)=>{
 			res.json({success:0,msg:'验证码错误'})
 			return
 		}
-		let openid=``
 		let time=new Date().getTime()
-		post(config.server+'nahiisp-user/user',{name:name,password:codes},(body)=>{
+		post(config.server+'nahiisp-user/user',{name:name,password:codes,time:time,openid:openid},(body)=>{
 			//res.json(body)
 			if(body.success){
 				east_api.login(name,codes,res,(success)=>{
