@@ -41,10 +41,6 @@ router.post('/register',(req,res,next)=>{
 			}
 		})
 	})
-
-	
-
-
 })
 
 
@@ -134,7 +130,7 @@ router.post('/set_setting_type_all',(req,res,next)=>{
 		}
 
 		loginValid(req,res,()=>{
-			post(config.server+'nahiisp-wish/wish',param,(body)=>{
+			post(config.server+'nahiisp-wish/wish',{time:new Date().getTime(),wishs:param},(body)=>{
 				res.json(body)
 			})
 		})
@@ -144,7 +140,7 @@ router.post('/set_setting_type_all',(req,res,next)=>{
 		let strs=ids
 
 		loginValid(req,res,()=>{
-			del(config.server+`nahiisp-wish/wish/${ids}`,(body)=>{
+			del(config.server+`nahiisp-wish/wish/${ids}/${new Date().getTime()}`,(body)=>{
 				res.json(body)
 			})
 		})
@@ -294,6 +290,7 @@ function loginValid(req,res,callback){
 function del(url,callback){
 	console.log(url)
 	request.del({url:url},(err,res,body)=>{
+		console.log(body)
 		if (!err && res.statusCode == 200) {
 	        callback(JSON.parse(body))
 	    }else{
