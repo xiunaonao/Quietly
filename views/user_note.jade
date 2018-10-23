@@ -12,9 +12,9 @@ block content
 						span {{obj.interceptTime}}
 					h3
 						label{{obj.tag}}
-						a.iconfont.btn(@click="move_roster(obj)") 
+						a.iconfont.btn(@click="move_roster(obj,-1)") 
 							span 添加到黑名单
-						a.iconfont.btn(@click="move_roster(obj)") 
+						a.iconfont.btn(@click="move_roster(obj,1)") 
 							span 添加到白名单
 						a.iconfont.btn(v-bind:href="'tel:'+obj.interceptNumber")
 							span 回拨
@@ -29,7 +29,7 @@ block content
 		.alert-layer(v-if='is_add')
 			.alert-add.l-alert
 				.close-btn(@click="is_add=false") ×
-				h4 添加到白名单
+				h4 添加到{{add_type==1?'白':'黑'}}名单
 				ul
 					li
 						label 固话
