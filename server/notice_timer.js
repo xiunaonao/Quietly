@@ -1,6 +1,6 @@
 let request=require('request')
 let config=require('../config.json')
-let postTime=new Date('2018-11-01')
+let postTime=new Date('2018-10-01')
 let wechat=require('./wechat')
 
 
@@ -22,7 +22,7 @@ function timer(){
 				msgTime[obj.openId].time++
 			}
 		}
-		console.log(openid_list)
+		console.log(openid_list.length)
 		for(var i=0;i<openid_list.length;i++){
 			let obj=msgTime[openid_list[i]]
 			let data={
