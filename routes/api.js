@@ -6,7 +6,7 @@ request=request.defaults({jar: true})
 let config=require('../config.json')
 let east_api=require('../server/east_api')
 let codes=`ECKoWMEJqqjCUoqh9VVTowMWNlyyywLBR7HM`
-let typedata=['疑似欺诈','骚扰电话','金融理财','房产中介','广告推销','违法犯罪','教育培训','招聘猎头','响一声来电']
+let typedata=['疑似欺诈','骚扰电话','保险理财','房产中介','广告推销','违法犯罪','教育培训','招聘猎头','响一声']
 
 
 router.post('/register',(req,res,next)=>{

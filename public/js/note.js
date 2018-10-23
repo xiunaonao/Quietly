@@ -74,7 +74,7 @@ var vapp=new Vue({
 			var scope=this
 			axios.get(url).then(function(res){
 				if(res.data.success)
-					this.note_list=res.data.result.result
+					scope.note_list=res.data.result.result
 
 			})
 		},

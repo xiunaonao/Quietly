@@ -8,13 +8,15 @@ block content
 			ul.roster-list
 				li(v-for="obj in note_list")
 					h4
-						label {{obj.tel}}
-						span {{obj.date.substring(0,obj.date.indexOf('.'))}}
+						label {{obj.interceptNumber}}&nbsp;
+						span {{obj.interceptTime}}
 					h3
-						label{{obj.remark}}
+						label{{obj.tag}}
+						a.iconfont.btn(@click="move_roster(obj)") 
+							span 添加到黑名单
 						a.iconfont.btn(@click="move_roster(obj)") 
 							span 添加到白名单
-						a.iconfont.btn(v-bind:href="'tel:'+obj.tel")
+						a.iconfont.btn(v-bind:href="'tel:'+obj.interceptNumber")
 							span 回拨
 
 		section
