@@ -59,7 +59,12 @@ var vapp=new Vue({
 					remark:''
 				}
 				scope.is_add=false;
+				//if(res.data.success){
 				vapp_layer.alert('已加入'+(scope.add_type==1?'白名单':'黑名单'))
+				// }else{
+				// 	vapp_layer.alert("")
+				// }
+
 			})
 			
 
@@ -86,7 +91,7 @@ var vapp=new Vue({
 				this.add_obj.type=3;
 				this.add_obj.tel4=obj.interceptNumber;
 			}
-			this.add_obj.remark=obj.tag;
+			//this.add_obj.remark=obj.tag;
 			this.is_add=true;
 
 		},
