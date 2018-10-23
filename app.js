@@ -11,8 +11,8 @@ var usersRouter = require('./routes/users');
 let settingRouter=require('./routes/setting')
 let reportRouter=require('./routes/report')
 let apiRouter=require('./routes/api')
-let notice_timer=require('./server/notice_timer')
-notice_timer.timer()
+// let notice_timer=require('./server/notice_timer')
+// notice_timer.timer()
 var ver=require('./package.json').version
 var app = express();
 

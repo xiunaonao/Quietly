@@ -23,6 +23,8 @@ function timer(){
 			}
 		}
 		console.log(openid_list.length)
+
+		
 		for(var i=0;i<openid_list.length;i++){
 			let obj=msgTime[openid_list[i]]
 			let data={
