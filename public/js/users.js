@@ -14,7 +14,7 @@ var vapp=new Vue({
 		},
 		open_func:function(){
 			this.is_open=!this.is_open;
-			localStorage.is_open=this.is_open?1:0;
+			//localStorage.is_open=this.is_open?1:0;
 		}
 	},
 	mounted:function(){

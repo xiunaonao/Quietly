@@ -76,25 +76,20 @@ function set_menu(callback){
 		            ]
 		       },{
 		       		"name":"个人中心",
-		       		"type":"view",
-		       		"url":"http://fsr.calltrace.cn/users/"
-		       		// "sub_button":[
-			       	// 	{
-			       	// 		"type":"view",
-			       	// 		"name":"我的",
-			       	// 		"url":"http://fsr.calltrace.cn/users/"	
-			       	// 	},
-			       	// 	{
-			       	// 		"type":"view",
-			       	// 		"name":"号码标记",
-			       	// 		"url":"http://fsr.calltrace.cn/report/"	
-			       	// 	},
-			       	// 	{
-			       	// 		"type":"view",
-			       	// 		"name":"拦截记录",
-			       	// 		"url":"http://fsr.calltrace.cn/users/note"	
-			       	// 	}
-		       		// ]
+		       		// "type":"view",
+		       		// "url":"http://fsr.calltrace.cn/users/"
+		       		"sub_button":[
+			       		{
+			       			"type":"view",
+			       			"name":"个人中心",
+			       			"url":"http://fsr.calltrace.cn/users/"	
+			       		},
+			       		{
+			       			"type":"view",
+			       			"name":"注册账号",
+			       			"url":"http://fsr.calltrace.cn/register"
+			       		}
+		       		]
 		       },{
 		       	"name":"关于我们",
 		       	"sub_button":[
@@ -134,7 +129,8 @@ function set_menu(callback){
 
 
 function notice(data,callback){
-	let openid='oy84s1FY0bf1k0gk2bEBbWuAbpqM'
+	//let openid='oy84s1FY0bf1k0gk2bEBbWuAbpqM'
+	let openid=data.openid
 	get_token((token)=>{
 		let url=`https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=${token}`
 		let date=new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()+' '+new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()
@@ -145,7 +141,7 @@ function notice(data,callback){
 			"topcolor":"#FF0000",
 			"data":{
 				first:{value:'骚扰电话拦截',color:'#333'},
-				keyword1:{value:date,color:'#333'},
+				keyword1:{value:data.date,color:'#333'},
 				keyword2:{value:data.number,color:'#E30'},
 				keyword3:{value:data.content,color:'#333'},
 				remark:{value:data.remark,color:'#333'}

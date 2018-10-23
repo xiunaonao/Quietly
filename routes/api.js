@@ -267,6 +267,35 @@ router.post('/send_sms',(req,res,next)=>{
 
 })
 
+
+router.get('/subscribe',(req,res,next)=>{
+	let url=config.server+'/nahiisp-subscribe/subscribe'
+	get(url,(body)=>{
+		res.json(body)
+	})
+})
+
+router.post('/subscribe_set',(req,res,next)=>{
+	let isopen=true
+	let id=''
+	if(!req.body.isopen){
+		isopen=false
+		id=req.body.id
+	}else{
+
+	}
+	
+	if(isopen){
+		post(config.server+'/nahiisp-subscribe/subscribe',(req,res,next)=>{
+
+		})
+	}else{
+		del(config.server+'/nahiisp-subscribe/{subscribeId}/{time}',(req,res,next)=>{
+
+		})
+	}
+})
+
 module.exports = router;
 
 function loginValid(req,res,callback){

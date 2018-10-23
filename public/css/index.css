@@ -131,8 +131,8 @@ section ul li .slider-input[type="text"]{width:.4rem;background:#F5F5F5;margin-r
 #roster h5 a{float:right;margin-right:.15rem;font-size:.13rem;color:#00CD66;}
 .table ul{border-top:solid #CCC .01rem;}
 .table li{height:.5rem;line-height:.15rem;border-bottom:solid #CCC .01rem;margin:0 .15rem;}
-.table li>*{font-weight:400;}
-.table li>h4{line-height:.3rem;}
+.table li>*{font-weight:400;text-indent: 0.1rem;}
+.table li>h4{line-height:.3rem;text-indent: 0.1rem;}
 .table li>h4>span{float:right;color:#AAA;}
 .table li>h3>a{float:right;}
 .table li>h3>a>span{color:#00CD66;margin-left:.1rem;}
