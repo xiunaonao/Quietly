@@ -14,25 +14,27 @@ function timer(){
 		let openid_list=[]
 		for(var i=0;i<body.result.result.length;i++){
 			let obj=body.result.result[i]
-			if(openid_list.indexOf(obj.openid)==-1){
-				openid_list.push(obj.openid)
-				msgTime[obj.openid]=obj
-				msgTime[obj.openid].time=0
+			if(openid_list.indexOf(obj.openId)==-1){
+				openid_list.push(obj.openId)
+				msgTime[obj.openId]=obj
+				msgTime[obj.openId].time=0
 			}else{
-				msgTime[obj.openid].time++
+				msgTime[obj.openId].time++
 			}
 		}
 
 		for(var i=0;i<openid_list.length;i++){
 			let obj=msgTime[openid_list[i]]
-			wechat.send_notice({
+			let data={
 				openid:openid_list[i],
 				url:'http://fsr.calltrace.cn/users/note',
 				date:obj.interceptTime,
 				number:obj.interceptNumber,
 				content:obj.tag,
 				remark:'点击查看详情'
-			},(body)=>{
+			}
+			console.log(data)
+			wechat.send_notice(data,(body)=>{
 				setTimeout(()=>{
 					console.log('发送完毕')
 					timer()
@@ -49,7 +51,7 @@ exports.timer=timer
 
 function get(url,callback){
 	request(url,(err,res,body)=>{
-		console.log(body)
+		//console.log(body)
 		if (!err && res.statusCode == 200) {
 	        callback(JSON.parse(body))
 	    }
