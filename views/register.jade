@@ -20,8 +20,13 @@ block content
 				input.xxxl-txt(type='text',placeholder='请填写验证码',v-model='code')
 				input.btn(@click='post_code',type='button',value="发送验证码",v-if='post_time==0')
 				input.btn(type='button',v-bind:value='"重新发送("+post_time+")"',v-if='post_time')
+			p
+				label &nbsp;
+				input.checkbox(type="checkbox",@click="isagreen=!isagreen")
+				span 同意
+					a(style="color:#00CD66")《服务条款》
 			div
-				button(@click='register') 绑定手机
+				button(@click='register',v-bind:style="{background:isagreen?'':'#DDD'}") 绑定手机
 			input#backurl(type="hidden",value='#{url}')
 	script var next_url='!{url}'
 	script(src='/js/register.js?v=#{_v}')

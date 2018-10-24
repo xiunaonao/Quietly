@@ -32,7 +32,7 @@ var vapp=new Vue({
 
 			var form={
 					isWished:roster_type==1?1:0,
-					type:roster_type=1,
+					type:1,
 					content:'',
 					wantPushNotification:roster_type==1?0:1
 			}

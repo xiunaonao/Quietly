@@ -4,7 +4,8 @@ var vapp=new Vue({
 		post_time:0,
 		tel:'',
 		code:'',
-		token:''
+		token:'',
+		isagreen:false
 	},
 	methods:{
 		post_code:function(){
@@ -44,7 +45,11 @@ var vapp=new Vue({
 				if(res.data.success){
 					vapp_layer.alert('绑定成功');
 					setTimeout(function(){
-						location.href=next_url?next_url:''
+						if(!next_url || next_url=='undefined'){
+							location.href='/users/'
+						}else{
+							location.href=next_url?next_url:''
+						}
 					},1500)
 				}
 			})

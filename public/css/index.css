@@ -8,6 +8,7 @@ b{font-weight:400;}
 a{text-decoration:none;color:inherit;-webkit-tap-highlight-color: transparent;}
 i{-webkit-appearance:none;}
 input,button{-webkit-appearance:none;}
+input[type='checkbox']{-webkit-appearance:checkbox;vertical-align: middle;margin-right:.1rem;}
 [v-cloak]{display:none;}
 
 @font-face {
