@@ -22,7 +22,7 @@ var vapp=new Vue({
 
 			var form={
 					isWished:this.add_type==1?1:0,
-					type:this.add_type==1?5:1,
+					type:1,
 					content:'',
 					wantPushNotification:this.add_type==1?0:1
 			}
