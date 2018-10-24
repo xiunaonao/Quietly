@@ -35,7 +35,7 @@ function timer(){
 					url:'http://fsr.calltrace.cn/users/note',
 					date:obj.interceptTime,
 					number:obj.interceptNumber,
-					content:obj.tag,
+					content:obj.type==0?'黑名单':obj.tag,
 					remark:'点击查看详情'
 				}
 				console.log(data)
