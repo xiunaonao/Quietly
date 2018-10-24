@@ -38,10 +38,10 @@ function timer(){
 				}
 				console.log(data)
 				wechat.send_notice(data,(body)=>{
-					setTimeout(()=>{
-						console.log('发送完毕')
-						timer()
-					},5000)
+					// setTimeout(()=>{
+					// 	console.log('发送完毕')
+					// 	timer()
+					// },5000)
 				})
 			}
 		}
