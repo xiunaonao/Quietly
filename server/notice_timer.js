@@ -5,11 +5,11 @@ let wechat=require('./wechat')
 
 
 function timer(){
+
 	let url=config.server+`/intercept-notice/interceptNotice/${postTime.getTime()}`
-	console.log(url)
+	//console.log(url)
 	get(url,(body)=>{
-		postTime=new Date()
-		console.log(body.result.result)
+		//console.log(body.result.result)
 		let msgTime={}
 		let openid_list=[]
 		for(var i=0;i<body.result.result.length;i++){
@@ -21,10 +21,12 @@ function timer(){
 			}else{
 				msgTime[obj.openId].time++
 			}
+			postTime=new Date(obj.createTime)
 		}
-		console.log(openid_list.length)
+		//console.log(openid_list.length)
 
-		console.log('当前未发送通知:'+openid_list.length)
+		//console.log('当前未发送通知:'+openid_list.length)
+		
 		if(openid_list.length>0){
 			for(var i=0;i<openid_list.length;i++){
 				let obj=msgTime[openid_list[i]]
@@ -38,14 +40,19 @@ function timer(){
 				}
 				console.log(data)
 				wechat.send_notice(data,(body)=>{
-					setTimeout(()=>{
-						console.log('发送完毕')
-						timer()
-					},5000)
 				})
 			}
-		}
+		}else{
 
+		}
+		reget()
+
+		function reget(){
+			setTimeout(()=>{
+				//console.log('发送完毕')
+				timer()
+			},5000)
+		}
 
 		
 	})
