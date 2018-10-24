@@ -17,7 +17,7 @@ var vapp=new Vue({
 			var isWished=false
 			var type=1
 			if(roster_type==1){
-				type=5
+				type=1
 				isWished=true
 			}
 			var scope=this
@@ -32,7 +32,7 @@ var vapp=new Vue({
 
 			var form={
 					isWished:roster_type==1?1:0,
-					type:roster_type==1?5:1,
+					type:roster_type=1,
 					content:'',
 					wantPushNotification:roster_type==1?0:1
 			}
@@ -50,8 +50,15 @@ var vapp=new Vue({
 			}
 
 			if(!this.valid(form.content)){
-				vapp_layer.alert('电话号码不正确')
+				vapp_layer.alert_min('电话号码不正确')
 				return
+			}
+
+			for(var i=0;i<this.roster_list.length;i++){
+				if(this.roster_list[i].content==form.content){
+					vapp_layer.alert_min("已存在的号码")
+					return
+				}
 			}
 
 			axios.post('/api/set_setting_type',{form:[form]}).then(function(res){
@@ -70,7 +77,7 @@ var vapp=new Vue({
 					remark:''
 				}
 				scope.is_add=false;
-				vapp_layer.alert('已加入'+(roster_type==1?'白名单':'黑名单'))
+				vapp_layer.alert_min('已加入'+(roster_type==1?'白名单':'黑名单'))
 			})
 			
 
@@ -80,7 +87,7 @@ var vapp=new Vue({
 			vapp_layer.confirm('确定要删除'+obj.content+'吗?',obj,function(_obj){
 				axios.post('/api/del_setting_type?id='+obj.id).then(function(res){
 					scope.roster_list.splice(scope.roster_list.indexOf(obj),1)
-					vapp_layer.alert('删除成功')
+					vapp_layer.alert_min('删除成功')
 				})
 			})
 		},
