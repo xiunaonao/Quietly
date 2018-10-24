@@ -9,7 +9,7 @@ function timer(){
 	console.log(url)
 	get(url,(body)=>{
 		postTime=new Date()
-
+		//console.log(body.result.result)
 		let msgTime={}
 		let openid_list=[]
 		for(var i=0;i<body.result.result.length;i++){
@@ -24,24 +24,26 @@ function timer(){
 		}
 		console.log(openid_list.length)
 
-		
-		for(var i=0;i<openid_list.length;i++){
-			let obj=msgTime[openid_list[i]]
-			let data={
-				openid:openid_list[i],
-				url:'http://fsr.calltrace.cn/users/note',
-				date:obj.interceptTime,
-				number:obj.interceptNumber,
-				content:obj.tag,
-				remark:'点击查看详情'
+		console.log('当前未发送通知:'+openid_list.length)
+		if(openid_list.length>0){
+			for(var i=0;i<openid_list.length;i++){
+				let obj=msgTime[openid_list[i]]
+				let data={
+					openid:openid_list[i],
+					url:'http://fsr.calltrace.cn/users/note',
+					date:obj.interceptTime,
+					number:obj.interceptNumber,
+					content:obj.tag,
+					remark:'点击查看详情'
+				}
+				console.log(data)
+				wechat.send_notice(data,(body)=>{
+					setTimeout(()=>{
+						console.log('发送完毕')
+						timer()
+					},5000)
+				})
 			}
-			console.log(data)
-			wechat.send_notice(data,(body)=>{
-				setTimeout(()=>{
-					console.log('发送完毕')
-					timer()
-				},5000)
-			})
 		}
 
 

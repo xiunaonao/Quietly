@@ -12,14 +12,14 @@ block content
 			h6
 			div
 				ul
-					li(v-for="obj in type_list")
+					li(v-for="obj in type_list",v-if='obj.id')
 						p
 							label {{obj.name.replace("响一声来电","响一声").replace("金融理财","保险理财")}}
-						input.slider-input(type="text",v-model='obj.value')
+						input.slider-input(type="text",v-model='obj.tagCount')
 						.slider(v-on:touchmove="touchmove('move',$event,obj)")
 							i
 							i
-							a(v-on:touchstart="touchstart('move',$event,obj)",v-bind:style="{'left':obj.value*0.01+'rem'}")
+							a(v-on:touchstart="touchstart('move',$event,obj)",v-bind:style="{'left':obj.tagCount*0.01+'rem'}")
 								i
 				//h4.btn(v-if="obj.list.length>1",@click="open_or_close(obj)") {{obj.name}}
 				//	i.iconfont {{obj.isopen?'&#xe600':'&#xe601'}}

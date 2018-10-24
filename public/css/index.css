@@ -45,6 +45,9 @@ input,button{-webkit-appearance:none;}
 .alert-layer>div button{height:.4rem;}
 .alert-layer>div>button{width:100%;}
 
+.alert-layer>.alert-min{background:rgba(0,0,0,0.5);color:#FFF;padding:.075rem .15rem;width:auto;}
+.alert-layer>.alert-min>p{color:#FFF;margin:0 0 0 0;}
+
 .choose{border:solid #333 .01rem;border-radius:.20rem;background:#FFF;width:.15rem;height:.15rem;float:left;margin-top:.1rem;margin-right:.1rem;}
 .choose i{float:left;width:.15rem;height:.15rem;border:solid #FFF .02rem;background:#00CD66;border-radius: .1rem;-webkit-transform:scale(0);box-sizing: border-box;}
 .choose-c i{-webkit-transform:scale(1);}

@@ -7,6 +7,7 @@ let config=require('../config.json')
 let east_api=require('../server/east_api')
 let codes=`ECKoWMEJqqjCUoqh9VVTowMWNlyyywLBR7HM`
 let typedata=['疑似欺诈','骚扰电话','保险理财','房产中介','广告推销','违法犯罪','教育培训','招聘猎头','响一声']
+let typedataDefault=['疑似欺诈','骚扰电话','广告推销','违法犯罪','响一声']
 
 
 router.post('/register',(req,res,next)=>{
@@ -69,6 +70,7 @@ router.get('/get_setting_type',(req,res,next)=>{
 						if(wishlist[j].content==obj.name && !wishlist[j].isWished){
 							obj.id=wishlist[j].id
 							obj.isWished=false
+							obj.tagCount=wishlist[j].tagCount
 							break;
 						}
 					}
@@ -116,7 +118,7 @@ router.post('/set_setting_type_all',(req,res,next)=>{
 		let param=[]
 		let strs=ids
 		if(ids.length==0){
-			strs=typedata
+			strs=typedataDefault
 		}
 		
 		for(var i=0;i<strs.length;i++){
@@ -125,7 +127,7 @@ router.post('/set_setting_type_all',(req,res,next)=>{
 				"type":2,
 				"content":strs[i],
 				"wantPushNotification":1,
-				"tagCount":10
+				"tagCount":50
 			})
 		}
 
@@ -270,9 +272,12 @@ router.post('/send_sms',(req,res,next)=>{
 
 router.get('/subscribe',(req,res,next)=>{
 	let url=config.server+'/nahiisp-subscribe/subscribe'
-	get(url,(body)=>{
-		res.json(body)
+	loginValid(req,res,()=>{
+		get(url,(body)=>{
+			res.json(body)
+		})
 	})
+	
 })
 
 router.post('/subscribe_set',(req,res,next)=>{
@@ -284,16 +289,40 @@ router.post('/subscribe_set',(req,res,next)=>{
 	}else{
 
 	}
+	let time=new Date().getTime()
 	
-	if(isopen){
-		post(config.server+'/nahiisp-subscribe/subscribe',(req,res,next)=>{
 
-		})
-	}else{
-		del(config.server+'/nahiisp-subscribe/{subscribeId}/{time}',(req,res,next)=>{
+		if(isopen){
+			loginValid(req,res,()=>{
+				post(config.server+'/nahiisp-subscribe/subscribe',{
+					time:time
+				},(body)=>{
+					res.json(body)
+				})
+			})
+		}else{
+			loginValid(req,res,()=>{
+				del(config.server+`/nahiisp-subscribe/subscribe/${id}/${time}`,(body)=>{
+					res.json(body)
+				})
+			})
+		}
 
-		})
+	
+})
+
+router.post("/tag_count",(req,res,next)=>{
+	let url=config.server+'/nahiisp-wish/tagCount'
+	let param={
+		id:req.body.id,
+		tagCount:req.body.tagCount,
+		time:new Date().getTime()
 	}
+	loginValid(req,res,()=>{
+		put(url,param,(body)=>{
+			res.json(body)
+		})
+	})
 })
 
 module.exports = router;
@@ -349,6 +378,38 @@ function post(url,req,callback,data_type){
 	    headers: {
 	        "content-type": data_type!='form'?'application/json':"application/x-www-form-urlencoded",
 	    }
+	}
+	if(data_type!='form')
+		config.body=req
+	else
+		config.form=req
+	console.log(config)
+	request(config, function(err, res, body) {
+		console.log(res.statusCode)
+		console.log(body)
+	    if (!err && res.statusCode == 200) {
+	        callback(body)
+	    }else{
+	    	callback({success:0})
+	    }
+	});
+
+
+}
+
+function put(url,req,callback,data_type){
+	let config={
+	    url: url,
+	    method: "PUT",
+	    json: true,
+	    headers:{
+	    	"content-type": data_type!='form'?'application/json':"application/x-www-form-urlencoded",
+	    }
+	    // headers: {
+	    //     //"content-type": data_type!='form'?'application/json':"application/x-www-form-urlencoded",
+	    //     'x-amz-content-sha256':'UNSIGNED-PAYLOAD',
+     //        'x-amz-date':date
+	    // }
 	}
 	if(data_type!='form')
 		config.body=req

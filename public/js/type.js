@@ -3,7 +3,8 @@ var vapp=new Vue({
 	data:{
 		is_open:false,
 		type_list:[
-		]
+		],
+		wait:false
 	},
 	methods:{
 		get_type:function(){
@@ -18,6 +19,11 @@ var vapp=new Vue({
 			})
 		},
 		change_type:function(obj){
+			if(this.wait){
+				vapp_layer.alert_min("请不要频繁操作")
+				return;
+			}
+			this.wait=true
 			Vue.set(obj,'isWished',!obj.isWished)
 			var scope=this
 			if(!obj.isWished){
@@ -26,16 +32,17 @@ var vapp=new Vue({
 					type:2,
 					content:obj.name,
 					wantPushNotification:1,
-					tagCount:10
+					tagCount:obj.tagCount
 				}]
 				axios.post('/api/set_setting_type',{form:form}).then(function(res){
 					console.log(res.data.result.result)
 					obj.id=res.data.result.result[0].id
-
+					scope.wait=false
 					scope.resave()
 				})
 			}else{
 				axios.post('/api/del_setting_type?id='+obj.id).then(function(res){
+					scope.wait=false
 					scope.resave()
 				})
 			}
@@ -50,6 +57,11 @@ var vapp=new Vue({
 			localStorage.switch_type=JSON.stringify(typelist)
 		},
 		change_type_all:function(){
+			if(this.wait){
+				vapp_layer.alert_min("请不要频繁操作")
+				return;
+			}
+			this.wait=true
 			var ids=[]
 			var scope=this
 			if(this.is_open){
@@ -64,6 +76,7 @@ var vapp=new Vue({
 				}
 			}
 			axios.post('/api/set_setting_type_all',{is_open:!scope.is_open,ids}).then(function(res){
+				scope.wait=false
 				if(res.data.success){
 					scope.is_open=!scope.is_open
 					if(!scope.is_open){

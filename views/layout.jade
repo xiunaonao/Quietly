@@ -16,7 +16,7 @@ html
 	block content
 
 	#export_dom(v-cloak)
-		.alert-layer(v-if='is_confirm || is_alert')
+		.alert-layer(v-if='is_confirm || is_alert || is_alert_min' v-bind:style='{background:is_alert_min?"rgba(0,0,0,0)":""}')
 			.alert-confirm.m-alert(v-if='is_confirm')
 				p {{alert_txt}}
 				div
@@ -26,6 +26,11 @@ html
 				p {{alert_txt}}
 				//div
 					button(@click='confirm_btn()') 确定
+			.alert-alert.m-alert.alert-min(v-if='is_alert_min')
+				p {{alert_txt}}
+				//div
+					button(@click='confirm_btn()') 确定
+
 	script.
 		//- if(!localStorage.user && location.pathname!='/' && location.pathname!='/register')
 		//- 	location.href='/register?url='+escape(location.href);
@@ -33,6 +38,7 @@ html
 			el:'#export_dom',
 			data:{
 				is_alert:false,
+				is_alert_min:false,
 				is_confirm:false,
 				alert_txt:'',
 				confirm_obj:undefined,
@@ -69,6 +75,19 @@ html
 								callback();
 							}
 						},time?time:1500)
+					}
+				},
+				alert_min:function(txt,time,callback){
+					var scope=this;
+					this.alert_txt=txt;
+					this.is_alert_min=true;
+					if(!time || time>=0){
+						setTimeout(function(){
+							scope.is_alert_min=false;
+							if(callback){
+								callback();
+							}
+						},time?time:1000)
 					}
 				}
 			}

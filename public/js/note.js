@@ -6,6 +6,7 @@ var vapp=new Vue({
 		noticeid:'',
 		note_list:[],
 		add_type:-1,
+		wait:false,
 		add_obj:{
 			type:1,
 			tel1:'',
@@ -111,12 +112,18 @@ var vapp=new Vue({
 		},
 		open_notice:function(){
 			var scope=this
+			if(this.wait){
+				vapp_layer.alert_min("请不要频繁操作")
+				return
+			}
+			this.wait=true
 			this.is_notice=!this.is_notice
 			var id=''
 			if(this.noticeid && !this.is_notice)
 				id=this.noticeid
 
 			axios.post('/api/set_notice?id='+id).then(function(res){
+				scope.wait=false
 				if(res.data.success){
 					if(res.data.result.result){
 						scope.noticeid=res.data.result.result
