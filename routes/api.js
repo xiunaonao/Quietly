@@ -16,6 +16,7 @@ router.post('/register',(req,res,next)=>{
 	let token=req.body.token
 	let openid=req.cookies['openid']
 
+
 	auth.decrypt(token,'hmAAAeastBBBcomCCCsmscode',(str)=>{
 		console.log(str+' == '+code)
 		if(str!=code)
@@ -24,8 +25,8 @@ router.post('/register',(req,res,next)=>{
 			return
 		}
 		let time=new Date().getTime()
-		post(config.server+'nahiisp-user/user',{name:name,password:codes,time:time,openid:openid},(body)=>{
-			//res.json(body)
+		post(config.server+'nahiisp-user/user',{name:name,password:codes,time:time,openId:openid},(body)=>{
+			console.log("注册结果:"+JSON.stringify(body))
 			if(body.success){
 				east_api.login(name,codes,res,(success)=>{
 					res.json({success:success})
