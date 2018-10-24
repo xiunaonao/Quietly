@@ -337,7 +337,9 @@ function loginValid(req,res,callback){
 			if(success){
 				callback(true)
 			}else{
-				callback(true)
+				//callback(true)
+				res.json({login:false});
+				//res.redirect('/register?'+)
 			}
 		})
 	}else{

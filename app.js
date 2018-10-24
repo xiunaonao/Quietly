@@ -53,9 +53,14 @@ app.use((req,res,next)=>{
       return;
     }else if(!apitime){
       let east_api=require('./server/east_api')
+
       east_api.login(tel,'ECKoWMEJqqjCUoqh9VVTowMWNlyyywLBR7HM',res,(success)=>{ 
           if(success)
             next()
+          else{
+            //console.log('登入失败')
+            res.redirect(302,'/register?url='+url)
+          }
       })
       return
     }
