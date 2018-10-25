@@ -9,7 +9,7 @@ function timer(){
 	let url=config.server+`/intercept-notice/interceptNotice/${postTime.getTime()}`
 	//console.log(url)
 	get(url,(body)=>{
-		//console.log(body.result.result)
+		reget()
 		let msgTime={}
 		let openid_list=[]
 		for(var i=0;i<body.result.result.length;i++){
@@ -45,26 +45,34 @@ function timer(){
 		}else{
 
 		}
-		reget()
+		
 
 		function reget(){
+			//console.log("重新载入")
 			setTimeout(()=>{
 				//console.log('发送完毕')
 				timer()
-			},5000)
+			},1000)
 		}
 
 		
+	},(err)=>{
+		setTimeout(()=>{
+			console.log('服务器异常')
+			timer()
+		},1000)
 	})
 }
 
 exports.timer=timer
 
-function get(url,callback){
+function get(url,callback,errcallback){
 	request(url,(err,res,body)=>{
 		//console.log(body)
 		if (!err && res.statusCode == 200) {
 	        callback(JSON.parse(body))
+	    }else{
+	    	errcallback(err)
 	    }
 	})
 }
