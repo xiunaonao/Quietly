@@ -32,7 +32,7 @@ var vapp=new Vue({
 					type:2,
 					content:obj.name,
 					wantPushNotification:1,
-					tagCount:obj.tagCount
+					tagCount:obj.tagCount?obj.tagCount:50
 				}]
 				axios.post('/api/set_setting_type',{form:form}).then(function(res){
 					console.log(res.data.result.result)
