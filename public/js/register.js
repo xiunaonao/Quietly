@@ -55,6 +55,8 @@ var vapp=new Vue({
 							location.href=next_url?next_url:''
 						}
 					},1500)
+				}else{
+					vapp_layer.alert_min(res.data.msg)
 				}
 			})
 		}
