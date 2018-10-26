@@ -52,7 +52,7 @@ function timer(){
 			setTimeout(()=>{
 				//console.log('发送完毕')
 				timer()
-			},1000)
+			},60000)
 		}
 
 		
@@ -60,7 +60,7 @@ function timer(){
 		setTimeout(()=>{
 			console.log('服务器异常')
 			timer()
-		},1000)
+		},60000)
 	})
 }
 

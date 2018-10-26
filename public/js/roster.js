@@ -62,10 +62,20 @@ var vapp=new Vue({
 			}
 
 			axios.post('/api/set_setting_type',{form:[form]}).then(function(res){
+				if(!res.data.success){
+					vapp_layer.alert_min("操作失败")
+					return
+				}
+				var data=res.data.result.result;
+				if(data.length<=0){
+					vapp_layer.alert_min("操作失败")
+					return
+				}
+
 				scope.roster_list.unshift({
 					content:form.content,
-					id:res.data.result.result,
-					createTime:scope.getDateStr(new Date)
+					id:data[0].id,
+					createTime:data[0].createTime
 				});
 
 				scope.add_obj={
