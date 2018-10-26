@@ -48,6 +48,7 @@ var vapp=new Vue({
 			}).then(function(res){
 				if(res.data.success){
 					vapp_layer.alert_min('绑定成功');
+					localStorage.switch_type=''
 					setTimeout(function(){
 						if(!next_url || next_url=='undefined'){
 							location.href='/users/'
