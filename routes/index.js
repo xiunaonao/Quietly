@@ -3,6 +3,7 @@ var router = express.Router();
 var crypto = require('crypto')
 let wechat=require(('../server/wechat'))
 let wechat_msg=require('../server/wechat_msg')
+let east_api=require('../server/east_api')
 
 /* GET home page. */
 router.get(['/index','/'], function(req, res, next) {
@@ -13,15 +14,24 @@ router.get('/register',(req,res,next)=>{
 	
 
 	let wechat_code=req.query.code
-	console.log("???")
 	if(req.query.testbs){
 		let tel_times=new Date(new Date().setDate(new Date().getDate()+30))
 		res.cookie('openid','oy84s1FY0bf1k0gk2bEBbWuAbpqM',{expires:tel_times,httpOnly:true})
+		if(req.query.url){
+			east_api.wxlogin('oy84s1FY0bf1k0gk2bEBbWuAbpqM',res,(success)=>{
+				if(success){
+					res.redirect(req.query.url)
+				}else{
+					res.render('register',{title:'用户绑定',url:req.query.url})
+				}
+			})
+			return
+		}
 		res.render('register',{title:'用户绑定',url:req.query.url})
 		return
 	}
 
-
+	
 
 	if(!wechat_code){
 		let url=encodeURIComponent('http://fsr.calltrace.cn/register?url='+req.query.url)
@@ -32,7 +42,16 @@ router.get('/register',(req,res,next)=>{
 		wechat.get_web_token(wechat_code,(body)=>{
 			let tel_times=new Date(new Date().setDate(new Date().getDate()+30))
 			res.cookie('openid',body.openid,{expires:tel_times,httpOnly:true})
-			console.log(body)
+			if(req.query.url){
+				east_api.wxlogin(body.openid,res,(success)=>{
+					if(success){
+						res.redirect(req.query.url)
+					}else{
+						res.render('register',{title:'用户绑定',url:req.query.url})
+					}
+				})
+				return
+			}
 			res.render('register',{title:'用户绑定',url:req.query.url})
 		})
 		//res.render('register',{title:'用户绑定',url:req.query.url})

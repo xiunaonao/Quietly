@@ -26,9 +26,38 @@ let register=(tel,pwd,callback)=>{
 }
 
 
+let wxlogin=(openid,res,callback)=>{
+	let url='/nahiisp-user/number?openId='+openid
+	let pwd="ECKoWMEJqqjCUoqh9VVTowMWNlyyywLBR7HM"
+	get(config.server+url,(body)=>{
+		//callback(body)
+		if(body.success && body.result.result.number){
+			let tel=body.result.result.number
+			post(config.server+'nahiisp-user/login',{j_username:tel,j_password:pwd},(body)=>{
+				 if(body.success){
+					let tel_times=new Date(new Date().setDate(new Date().getDate()+30))
+					let api_times=new Date(new Date().setMinutes(new Date().getMinutes()+4))
+					res.cookie('t',tel,{expires:tel_times,httpOnly:true})
+					//res.cookie('p',pwd,{expires:tel_times,httpOnly:true})
+					res.cookie('a',1,{expires:api_times,httpOnly:true})
+					callback(true)
+		        }else{
+		          	//res.redirect(302,'/register?url='+url)
+		          	callback(false)
+		        }
+
+			},'form')
+		}else{
+			callback(false)
+		}
+	})
+
+}
+
 module.exports={
 	login:login,
-	register:register
+	register:register,
+	wxlogin:wxlogin
 }
 
 
@@ -36,7 +65,7 @@ function get(url,callback){
 	request(url,(err,res,body)=>{
 		console.log(body)
 		if (!err && res.statusCode == 200) {
-	        callback(body)
+	        callback(JSON.parse(body))
 	    }
 	})
 }
