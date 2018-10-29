@@ -44,6 +44,16 @@ var vapp=new Vue({
 				axios.post('/api/del_setting_type?id='+obj.id).then(function(res){
 					scope.wait=false
 					scope.resave()
+					var isanyone=false
+					for(var i=0;i<scope.type_list.length;i++){
+						if(!scope.type_list[i].isWished){
+							isanyone=true
+							break
+						}
+					}
+					if(!isanyone){
+						scope.is_open=false
+					}
 				})
 			}
 		},
