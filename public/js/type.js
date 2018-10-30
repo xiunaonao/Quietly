@@ -4,7 +4,8 @@ var vapp=new Vue({
 		is_open:false,
 		type_list:[
 		],
-		wait:false
+		wait:false,
+		is_else_number:true
 	},
 	methods:{
 		get_type:function(){

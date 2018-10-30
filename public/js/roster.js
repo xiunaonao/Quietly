@@ -49,7 +49,7 @@ var vapp=new Vue({
 					break;
 			}
 
-			if(!this.valid(form.content)){
+			if(!this.valid(form.content) && this.add_obj.type!=3){
 				vapp_layer.alert_min('电话号码不正确')
 				return
 			}
