@@ -35,7 +35,7 @@ router.get('/register',(req,res,next)=>{
 
 	if(!wechat_code){
 		if(!req.query.url){
-			req.query.url="/users/"
+			req.query.url="newuser"
 		}
 		let url=encodeURIComponent('http://fsr.calltrace.cn/register?url='+req.query.url)
 		//http%3a%2f%2ffsr.calltrace.cn%2fusers%2f
@@ -45,7 +45,7 @@ router.get('/register',(req,res,next)=>{
 		wechat.get_web_token(wechat_code,(body)=>{
 			let tel_times=new Date(new Date().setDate(new Date().getDate()+30))
 			res.cookie('openid',body.openid,{expires:tel_times,httpOnly:true})
-			if(req.query.url){
+			if(req.query.url && req.query.url!="newuser"){
 				east_api.wxlogin(body.openid,res,(success)=>{
 					if(success){
 						res.redirect(req.query.url)
@@ -55,7 +55,7 @@ router.get('/register',(req,res,next)=>{
 				})
 				return
 			}
-			res.render('register',{title:'用户绑定',url:req.query.url})
+			res.render('register',{title:'用户绑定',url:'/users/'})
 		})
 		//res.render('register',{title:'用户绑定',url:req.query.url})
 	}
