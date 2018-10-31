@@ -34,6 +34,9 @@ router.get('/register',(req,res,next)=>{
 	
 
 	if(!wechat_code){
+		if(!req.query.url){
+			req.query.url="/users/"
+		}
 		let url=encodeURIComponent('http://fsr.calltrace.cn/register?url='+req.query.url)
 		//http%3a%2f%2ffsr.calltrace.cn%2fusers%2f
 		res.redirect(`https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxed14cc095edc34e0&redirect_uri=${url}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect`)
