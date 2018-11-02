@@ -15,7 +15,7 @@ block content
 					li(v-for="obj in type_list",v-if='obj.id')
 						p
 							label {{obj.name.replace("响一声来电","响一声").replace("金融理财","保险理财")}}
-						input.slider-input(type="text",v-model='obj.tagCount')
+						input.slider-input(type="text",v-model='obj.tagCount',@change="changeend(obj)")
 						.slider(v-on:touchmove="touchmove('move',$event,obj)")
 							i
 							i
