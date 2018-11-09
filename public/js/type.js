@@ -3,7 +3,8 @@ var vapp=new Vue({
 	data:{
 		is_open:false,
 		is_show_list:false,
-		winheight:__height,
+		winheight:__remheight,
+		winwidth:__width,
 		type_list:[
 		],
 		wait:false,
