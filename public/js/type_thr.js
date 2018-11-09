@@ -74,6 +74,15 @@ var vapp=new Vue({
 			}
 		},
 		changeend:function(obj){
+			if(obj.tagCount>200)
+			{
+				obj.tagCount=200
+			}
+
+			if(obj.tagCount<0)
+			{
+				obj.tagCount=0
+			}
 			axios.post('/api/tag_count',{id:obj.id,tagCount:obj.tagCount}).then(function(res){
 			})
 		}
