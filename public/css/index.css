@@ -49,8 +49,8 @@ input[type='checkbox']{-webkit-appearance:checkbox;vertical-align: middle;margin
 .alert-layer>.alert-min{background:rgba(0,0,0,0.5);color:#FFF;padding:.075rem .15rem;width:auto;}
 .alert-layer>.alert-min>p{color:#FFF;margin:0 0 0 0;}
 
-.choose{border:solid #333 .01rem;border-radius:.20rem;background:#FFF;width:.15rem;height:.15rem;float:left;margin-top:.1rem;margin-right:.1rem;}
-.choose i{float:left;width:.15rem;height:.15rem;border:solid #FFF .02rem;background:#00CD66;border-radius: .1rem;-webkit-transform:scale(0);box-sizing: border-box;}
+.choose{border:solid #333 .01rem;border-radius:.20rem;background:#FFF;width:.2rem;height:.2rem;float:left;margin-top:.1rem;margin-right:.1rem;}
+.choose i{float:left;width:.2rem;height:.2rem;border:solid #FFF .04rem;background:#149FEA;border-radius: .1rem;-webkit-transform:scale(0);box-sizing: border-box;}
 .choose-c i{-webkit-transform:scale(1);}
 .m-alert{width:2rem;}
 .l-alert{width:3rem;}
@@ -60,13 +60,13 @@ input[type='checkbox']{-webkit-appearance:checkbox;vertical-align: middle;margin
 
 
 input[type='text'],input[type='password']{border:none #CCC 0;border-bottom:#CCC solid .01rem;height:.3rem;outline:none;text-indent:.1rem;border-radius:0;}
-button{color:#FFF;background:#00CD66;color:#FFF;border-width:0;border-style:solid;border-radius:.02rem;}
+button{color:#FFF;background:#149FEA;color:#FFF;border-width:0;border-style:solid;border-radius:.02rem;}
 .m-txt{width:.5rem;}
 .l-txt{width:1.1rem;}
 .xl-txt{width:2rem;}
 .xxl-txt{width:2.25rem;}
 .xxxl-txt{width:2.5rem;}
-.text-line{margin:0 .05rem;color:#CCC;}
+.text-line{margin:0 .05rem;color:#333;}
 
 .gray-bg{background:#999;}
 
@@ -199,3 +199,31 @@ section ul li .slider-input[type="text"]{width:.4rem;background:#F5F5F5;margin-r
 .close-box .close-btn{width:.2rem;height:.075rem;background:url(/img/type/top.png) no-repeat center/.2rem;display:inline-block;}
 .type-btn-list .type-thr{border-top:.1rem solid #F5F5F5;height:.4rem;line-height:.4rem;text-align:center;display:block;}
 .type-btn-list .type-thr label{display:inline-block;}
+
+
+
+
+/********* rose **********/
+#roster{height:100%;}
+.rose-banner{width:3.75rem;height:1rem;background:url(/img/rose/bannerB.png) no-repeat center/3.75rem;}
+.rose-w{background-image: url(/img/rose/bannerW.png);}
+.rose-table{background:#F7F7F7;padding:.2rem .15rem;}
+.rose-table li{height:.65rem;background:#FFF;}
+.rose-table li h5{float:left;margin-top:.10rem;font-weight:300;margin-left:.15rem;}
+.rose-table li h5>*{display: block;margin-bottom:.03rem;}
+.rose-table li h5>label{color:#303235;font-size:.17rem;}
+.rose-table li h5>span{color:#BBB;font-size:.13rem;}
+.rose-table li button{float:right;margin:.2rem .15rem;width:.6rem;height:.25rem;border:#BBB solid .01rem;background-color:#FFF;color:#666;}
+.rose-button{position:fixed;bottom:0;z-index:98;background:#FFF;}
+.rose-button button{background:#149FEA;border-radius:.05rem;color:#FFF;width:3.45rem;margin:.1rem .15rem;font-size:.15rem;display:block;height:.44rem;}
+
+.alert-layer>.alert-roster{width:3.15rem;border-radius:0;box-sizing:border-box;padding-top:0;}
+.alert-layer>.alert-roster>h4{background:url(/img/rose/rose_ico.png) no-repeat 0 center/.13rem;text-align:left;text-indent:.2rem;line-height:.45rem;
+  border-bottom:.01rem solid #EEE;font-weight:300;}
+.alert-rose-input{float:right;border-bottom:.01rem solid #CCC;height:.49rem;width:2rem;text-align:left;}
+.alert-layer>.alert-roster li{height:.5rem;line-height:.5rem;}
+.alert-layer>.alert-roster li a{margin-top:.16rem;}
+.alert-layer>.alert-roster li input{border-bottom-style:none;}
+.alert-layer>.alert-roster  .alert-button{margin-top:.2rem;}
+.alert-layer>.alert-roster  .alert-button button{width:1.35rem;height:.4rem;font-size:.15rem;}
+.alert-layer>.alert-roster  .alert-button button:first-child{margin-right:.15rem;background-color:#FFF;color:#000;border:#CCC .01rem solid;}
