@@ -227,3 +227,18 @@ section ul li .slider-input[type="text"]{width:.4rem;background:#F5F5F5;margin-r
 .alert-layer>.alert-roster  .alert-button{margin-top:.2rem;}
 .alert-layer>.alert-roster  .alert-button button{width:1.35rem;height:.4rem;font-size:.15rem;}
 .alert-layer>.alert-roster  .alert-button button:first-child{margin-right:.15rem;background-color:#FFF;color:#000;border:#CCC .01rem solid;}
+
+
+
+/********** register ***********/
+.reg-banner{background:url(/img/register/banner.png) no-repeat center/3.75rem;height:2.3rem;}
+.reg-box{width:3.15rem;height:2.25rem;margin:0 auto;-webkit-transform:translateY(-.6rem);background:#FFF;box-shadow:#AAA .0rem .0rem .1rem;
+  border-radius:.03rem;box-sizing:border-box;padding-top:.25rem;}
+.reg-box p{position:relative;}
+.reg-box p>input[type="text"]{width:2.75rem;height:.45rem;background:#EFF1F2 no-repeat .13rem center/.18rem;border-radius:.03rem;display:block;margin:0 auto;border:none 0 #000;
+  margin-bottom:.15rem;text-indent:.45rem;}
+.reg-box p>button{position:absolute;top:0;right:.30rem;background:rgba(0,0,0,0);border-style:none;color:#149FEA;height:.45rem;}
+.reg-box .tel{background-image:url(/img/register/tel.png)!important;}
+.reg-box .code{background-image:url(/img/register/code.png)!important;}
+.reg-box .check{width:2.75rem;margin:0 auto;}
+.reg-box div button{width:3.15rem;height:.45rem;background-color:#149FEA;margin-top:.2rem;border-radius:.05rem;}

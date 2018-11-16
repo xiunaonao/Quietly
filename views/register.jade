@@ -6,7 +6,24 @@ block content
 			location.href='/';
 		}
 	article#register(v-cloak)
-
+		.reg-banner
+		.reg-box
+			p
+				input.tel(type="text",placeholder='请填写要您的手机号码',v-model='tel')
+			p
+				input.code(type="text",placeholder='请填写验证码',v-model='code')
+				button(@click='post_code',type='button',value="发送验证码",v-if='post_time==0') 获取验证码
+				button(type='button',v-if='post_time') 重新发送({{post_time}})
+			p.check
+				label &nbsp;
+				input.checkbox(type="checkbox",@click="isagreen=!isagreen")
+				span 同意
+					a(style="color:#149FEA")《服务条款》
+			div
+				button(@click='register',v-bind:style="{background:isagreen?'':'#DDD'}") 绑定手机
+	script var next_url='!{url}'
+	script(src='/js/register.js?v=#{_v}')			
+	//article#register(v-cloak)
 		h5 用户绑定
 		.form
 			p
@@ -28,7 +45,6 @@ block content
 			div
 				button(@click='register',v-bind:style="{background:isagreen?'':'#DDD'}") 绑定手机
 			input#backurl(type="hidden",value='#{url}')
-	script var next_url='!{url}'
-	script(src='/js/register.js?v=#{_v}')
+
 
 				
