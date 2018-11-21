@@ -1,7 +1,19 @@
 extends layout
 
 block content
-	article#list(v-cloak)
+	article#list(v-cloak,style="background:#F7F7F7;")
+		.common-banner.report-list-banner
+		.report-list-box
+			h5.report-title 您已举报{{list.length}}次号码
+			ul.report-list
+				li(v-for="obj in list")
+					span {{obj.number}}
+					label {{obj.createTime}}
+		.common-button
+			a(href='/report/') 添加
+
+
+	//article#list(v-cloak)
 		h5 您已举报{{list.length}}次号码
 			a(href='/report/') 我要举报
 		div.table
@@ -14,6 +26,8 @@ block content
 						label{{obj.description}}
 						//a.iconfont.btn(href="javascript:;")
 							span 审核中
+
+
 
 
 		.alert-layer(v-if='false')

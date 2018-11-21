@@ -1,7 +1,31 @@
 extends layout
 
 block content
-	article#note(v-cloak)
+	article#note(v-cloak,style="background:#F7F7F7;")
+		.common-banner.report-list-banner
+		.note-list-box
+			h5.note-title 已为您拦截{{note_list.length}}次电话
+			section
+				ul
+					li.border-top.btn
+						p
+							label 拦截后通知
+							aside.btn(@click='open_notice',v-bind:class="[is_notice?'open':'']")
+									span
+			ul.note-list
+				li(v-for="obj in note_list")
+					p
+						span {{obj.interceptNumber}}
+						label {{obj.tag}}
+					p
+						b {{obj.interceptTime}}
+						a.iconfont.btn(@click="move_roster(obj,1)",style="margin-right:.15rem;") 
+							span 添加到白名单
+						a.iconfont.btn(v-bind:href="'tel:'+obj.interceptNumber")
+							span 回拨
+
+
+	//article#note(v-cloak)
 		h5 已为您拦截{{note_list.length}}次电话
 			//a
 		div.table
