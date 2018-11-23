@@ -39,7 +39,7 @@ router.post('/register',(req,res,next)=>{
 						res.json({success:false,msg:'登录失败'})
 				})
 			}else{
-
+				res.json({success:false,msg:'绑定失败'})
 			}
 		})
 	})
