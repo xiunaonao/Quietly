@@ -10,10 +10,12 @@ block content
 			.shield.shield3
 		.type-btn-list(v-bind:style="{'-webkit-transform':is_show_list?'translateY('+((__height*.01)/__size-9.4)+'rem) translateX(-1.875rem)':''}")
 			div.close-box
-				a.close-btn(@click="is_show_list=!is_show_list")
+				a.close-btn(v-if="!is_show_list",@click="is_show_list=!is_show_list")
+				a.open-btn(v-if="is_show_list",@click="is_show_list=!is_show_list")
+				label.close-txt {{!is_show_list?'点击以展开更多':'点击收起'}}
 			ul
 				li(v-for="obj in type_list")
-					span(v-bind:style="{'background-image':'url(/img/type/'+obj.name+(obj.isWished?'c':'')+'.png)'}",@click="if(is_open)change_type(obj)")
+					span(v-bind:style="{'background-image':'url(/img/type/'+obj.name+(obj.isWished?'c':'')+'.png)'}",@click="change_type(obj)")
 						a(v-if="!obj.isWished")
 					label {{obj.name}}
 			a.type-thr(href="type_thr")

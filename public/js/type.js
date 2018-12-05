@@ -39,6 +39,8 @@ var vapp=new Vue({
 					tagCount:obj.tagCount?obj.tagCount:50
 				}]
 				axios.post('/api/set_setting_type',{form:form}).then(function(res){
+
+					scope.is_open=true
 					console.log(res.data.result.result)
 					obj.id=res.data.result.result[0].id
 					scope.wait=false
@@ -57,6 +59,8 @@ var vapp=new Vue({
 					}
 					if(!isanyone){
 						scope.is_open=false
+					}else{
+						scope.is_open=true
 					}
 				})
 			}
