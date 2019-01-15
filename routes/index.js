@@ -31,7 +31,21 @@ router.get('/register',(req,res,next)=>{
 		return
 	}
 
-	
+	if(req.query.unicom){
+		req.cookie('openid','test123',{expires:tel_time,httpOnly:true})
+		if(req.query.url){
+			east_api.wxlogin('test123',req,(success)=>{
+				if(success){
+					res.redirect(req.query.url)
+				}else{
+					res.render('register',{title:'用户绑定',url:req.query.url})
+				}
+			})
+			return
+		}
+		res.render('register',{title:'用户绑定',url:req.query.url})
+		return;
+	}
 
 	if(!wechat_code){
 		if(!req.query.url){
