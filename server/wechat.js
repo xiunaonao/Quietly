@@ -175,6 +175,7 @@ function boss_note(data,callback){
 			"topcolor":"#FF0000",
 			"data":{
 				first:{value:'订阅成功提醒',color:'#333'},
+				type:{value:'防骚扰服务订阅',color:'#333'}
 				date:{value:date,color:'#333'},
 				tel:{value:data.number,color:'#E30'},
 				time:{value:date,color:'#333'},
