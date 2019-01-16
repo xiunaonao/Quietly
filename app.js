@@ -49,12 +49,15 @@ app.use((req,res,next)=>{
     //let password=req.cookies['p']
     let apitime=req.cookies['a']
     if(!tel){
-      res.redirect(302,'/register?url='+url)
+      if(url.indexOf('unicom')>0){
+        res.redirect(302,'/register?url='+url+'&unicom=1')
+      }else
+        res.redirect(302,'/register?url='+url)
       return;
     }else if(!apitime){
       let east_api=require('./server/east_api')
 
-      east_api.login(tel,'ECKoWMEJqqjCUoqh9VVTowMWNlyyywLBR7HM',res,(success)=>{ 
+      east_api.login(tel,'ECKoWMEJqqjCUoqh9VVTowMWNlyyywLBR7HM',res,(success)=>{
           if(success)
             next()
           else{

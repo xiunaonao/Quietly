@@ -32,7 +32,10 @@ router.get('/register',(req,res,next)=>{
 	}
 
 	if(req.query.unicom){
-		req.cookie('openid','test123',{expires:tel_time,httpOnly:true})
+		console.log("test123");
+		let tel_times=new Date(new Date().setDate(new Date().getDate()+30))
+		res.cookie('openid','test123',{expires:tel_times,httpOnly:true})
+		res.cookie('unicom_test','1',{expires:tel_times,httpOnly:true})
 		if(req.query.url){
 			east_api.wxlogin('test123',req,(success)=>{
 				if(success){

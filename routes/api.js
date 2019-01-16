@@ -16,6 +16,12 @@ router.post('/register',(req,res,next)=>{
 	let token=req.body.token
 	let openid=req.cookies['openid']
 
+	if(req.cookies['unicom_test']){
+		east_api.login(name,codes,res,(success)=>{
+			res.json({success:success})
+		},req)
+		return
+	}
 
 	auth.decrypt(token,'hmAAAeastBBBcomCCCsmscode',(str)=>{
 		console.log(str+' == '+code)
@@ -54,6 +60,11 @@ router.get('/get_base_type',(req,res,next)=>{
 router.get('/get_setting_type',(req,res,next)=>{
 	let isWished=req.query.isWished
 	let type=req.query.type
+	if(req.cookies["unicom_test"]){
+		let json={"success":true,"message":"成功","result":[{"name":"疑似欺诈","isWished":true,"id":""},{"name":"骚扰电话","isWished":true,"id":""},{"name":"广告推销","isWished":true,"id":""},{"name":"违法犯罪","isWished":true,"id":""},{"name":"响一声","isWished":true,"id":""},{"name":"保险理财","isWished":true,"id":""},{"name":"房产中介","isWished":true,"id":""},{"name":"教育培训","isWished":true,"id":""},{"name":"招聘猎头","isWished":true,"id":""}],"is_open":false}
+		res.json(json)
+		return
+	}
 	loginValid(req,res,(success)=>{
 		get(config.server+`nahiisp-wish/wishs?isWished=${isWished}&type=${type}`,(body)=>{
 			let json={}
@@ -94,6 +105,7 @@ router.get('/get_setting_type',(req,res,next)=>{
 
 
 router.post('/set_setting_type',(req,res,next)=>{
+
 	let param=[]
 	for(let i=0;i<req.body.form.length;i++){
 		param.push({
@@ -104,6 +116,14 @@ router.post('/set_setting_type',(req,res,next)=>{
 			"tagCount":req.body.form[i].tagCount
 		})
 	}
+
+
+	if(req.cookies["unicom_test"]){
+		res.json({"success":true,"message":"保存成功!","code":null,"isShow":"01","result":{"result":[{"id":"2222222","isWished":param.isWished,"type":2,"content":param.content,"wantPushNotification":true,"tagCount":50,"updateTime":null,"number":"10000000000","createTime":new Date().getTime()}]}})
+		return
+	}
+
+	
 	loginValid(req,res,()=>{
 		post(config.server+'nahiisp-wish/wish',{time:new Date().getTime(),wishs:param},(body)=>{
 			res.json(body)
