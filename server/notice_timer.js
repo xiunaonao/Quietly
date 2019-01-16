@@ -47,7 +47,7 @@ function boss_timer(){
 	function reget(){
 		setTimeout(()=>{
 			boss_timer()
-		})
+		},60000)
 	}
 }
 
