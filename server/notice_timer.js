@@ -3,6 +3,52 @@ let config=require('../config.json')
 let postTime=new Date()
 let wechat=require('./wechat')
 
+function boss_timer(){
+	let url=config.server+'nahiisp-subscribnote/subscribNote'
+	get(url,(body)=>{
+		reget()
+		let msgTime={}
+		let openid_list=[]
+		for(var i=0;i<body.result.result.length;i++){
+			let obj=body.result.result[i]
+			if(openid_list.indexOf(obj.openId)==-1){
+				openid_list.push(obj.openId)
+				msgTime[obj.openId]=obj
+				msgTime[obj.openId].time=0
+			}else{
+				msgTime[obj.openId].time++
+			}
+			postTime=new Date(obj.createTime)
+		}
+
+		if(openid_list.length>0){
+			for(var i=0;i<openid_list.length;i++){
+				let obj=msgTime[openid_list[i]]
+				let data={
+					openid:openid_list[i],
+					url:'',
+					date:obj.interceptTime,
+					number:obj.interceptNumber,
+					//content:obj.type==0?'黑名单':obj.tag,
+					remark:'感谢'
+				}
+				console.log(data)
+				wechat.boss_note(data,(body)=>{
+					
+				})
+			}
+		}else{
+
+		}
+
+	})
+
+	function reget(){
+		setTimeout(()=>{
+			boss_timer()
+		})
+	}
+}
 
 function timer(){
 
@@ -40,6 +86,7 @@ function timer(){
 				}
 				console.log(data)
 				wechat.send_notice(data,(body)=>{
+
 				})
 			}
 		}else{
@@ -65,6 +112,7 @@ function timer(){
 }
 
 exports.timer=timer
+exports.boss_timer=boss_timer
 
 function get(url,callback,errcallback){
 	request(url,(err,res,body)=>{

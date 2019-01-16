@@ -51,14 +51,15 @@ router.post('/register',(req,res,next)=>{
 	})
 })
 
-router.get('/subscribe_note',(req,res,next)=>{
-	let url=config.server+'nahiisp-subscribnote/subscribNote'
-	get(url,(body)=>{
-		res.json(body)
-	})
+// router.get('/boss_note',(req,res,next)=>{
+// 	//let url=config.server+'nahiisp-subscribnote/subscribNote'
+// 	//console.log('开始同步boss')
+// 	// get(url,(body)=>{
+// 	// 	res.json(body)
+// 	// })
 
-	//res.json()
-})
+// 	//res.json()
+// })
 
 router.get('/get_base_type',(req,res,next)=>{
 	res.json({success:1,result:typedata})

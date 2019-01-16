@@ -162,11 +162,38 @@ function notice(data,callback){
 
 }
 
+function boss_note(data,callback){
+	let openid=data.openid
+	get_token((token)=>{
+
+		let url=`https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=${token}`
+		let date=new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate()+' '+new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds()
+		let obj={
+			"touser":openid,
+			"template_id":"PjXBrZn7VQgJ5Q5g44wp5AuO4ZW4EJlE4Y-ACX2OuYc",
+			"url":data.url,
+			"topcolor":"#FF0000",
+			"data":{
+				first:{value:'订阅成功提醒',color:'#333'},
+				date:{value:date,color:'#333'},
+				tel:{value:data.number,color:'#E30'},
+				time:{value:date,color:'#333'},
+				//remark:{value:data.remark,color:'#333'}
+			}
+		}
+		post(url,obj,(body)=>{
+			callback(body)
+		})
+	})
+}
+
+
 module.exports={
 	set_menu:set_menu,
 	get_web_token:get_web_token,
 	get_user:get_user,
-	send_notice:notice
+	send_notice:notice,
+	boss_note:boss_note
 }
 
 

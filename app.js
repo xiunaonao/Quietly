@@ -13,6 +13,7 @@ let reportRouter=require('./routes/report')
 let apiRouter=require('./routes/api')
 let notice_timer=require('./server/notice_timer')
 notice_timer.timer()
+notice_timer.boss_timer()
 var ver=require('./package.json').version
 var app = express();
 
@@ -84,7 +85,7 @@ app.use('/api',apiRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  next(createError(404))
 });
 
 // error handler
