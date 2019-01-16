@@ -51,7 +51,14 @@ router.post('/register',(req,res,next)=>{
 	})
 })
 
+router.get('/subscribe_note',(req,res,next)=>{
+	let url=config.server+'nahiisp-subscribnote/subscribNote'
+	get(url,(body)=>{
+		res.json(body)
+	})
 
+	//res.json()
+})
 
 router.get('/get_base_type',(req,res,next)=>{
 	res.json({success:1,result:typedata})

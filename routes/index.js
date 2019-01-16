@@ -32,7 +32,6 @@ router.get('/register',(req,res,next)=>{
 	}
 
 	if(req.query.unicom){
-		console.log("test123");
 		let tel_times=new Date(new Date().setDate(new Date().getDate()+30))
 		res.cookie('openid','test123',{expires:tel_times,httpOnly:true})
 		res.cookie('unicom_test','1',{expires:tel_times,httpOnly:true})
