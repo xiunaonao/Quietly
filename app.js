@@ -44,6 +44,8 @@ app.use((req,res,next)=>{
 
 app.use((req,res,next)=>{
   let url=req.url.toLowerCase();
+  console.log(req.headers.host)
+  return
   if(url.indexOf('/setting')==0 || url.indexOf('/report')==0 || url.indexOf('/users')==0){
     let tel=req.cookies['t']
     //let password=req.cookies['p']
@@ -53,7 +55,7 @@ app.use((req,res,next)=>{
         res.redirect(302,'/register?url='+url+'&unicom=1')
       }else
         res.redirect(302,'/register?url='+url)
-      return;
+      return
     }else if(!apitime){
       let east_api=require('./server/east_api')
 
