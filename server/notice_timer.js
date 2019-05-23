@@ -54,7 +54,7 @@ function boss_timer(){
 
 function timer(){
 
-	let url=config.server+`/intercept-notice/interceptNotice/${postTime.getTime()}`
+	let url=config.server+`/intercept-notice/interceptNotice`
 	//console.log(url)
 	get(url,(body)=>{
 		reget()
@@ -120,6 +120,7 @@ function get(url,callback,errcallback){
 	request(url,(err,res,body)=>{
 		//console.log(body)
 		if (!err && res.statusCode == 200) {
+			console.log(body)
 	        callback(JSON.parse(body))
 	    }else{
 	    	errcallback(err)
